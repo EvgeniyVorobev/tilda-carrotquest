@@ -50,17 +50,17 @@ $(document).ready(function(){
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
             && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
             && this.name != 'tildaspec-tildacaptcha' && this.value != '') {
-            allInfo[this.name] = this.value+' <br>';
+            allInfo[this.name] = ' '+this.value+' <br>';
          }
     })
     textareaInformation.each(function () {
         if ( this.value != '') {
-            allInfo[this.name] = this.value+' <br>';
+            allInfo[this.name] = ' '+this.value+' <br>';
         }
     })
       selectInformation.each(function () {
         if ( this.value != '') {
-            allInfo[this.name] = this.value+' <br>';
+            allInfo[this.name] = ' '+this.value+' <br>';
         }
     })
     console.log(allInfo)
