@@ -35,8 +35,11 @@ setTimeout(function(){
 
 window.mySuccessFunction = function($form){
 
-    var formname,name,familyname,email,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
+    var text,text1,text2,text3,text4,text5,text6,
+    checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6
+    formname,name,familyname,email,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
     var formArray = $form.serializeArray(); // Массив из данных формы
+    var allInfo = $form.serializeArray(); // Массив из данных формы
 
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
@@ -56,17 +59,18 @@ window.mySuccessFunction = function($form){
         familyname = this.value ; // фамилия из формы
     }
     if (this.name == 'email' || this.name == 'Email') {
-       email = this.value   ; // email из формы
+        email = this.value   ; // email из формы
+     }
+    if (this.name == 'phone' || this.name = 'Phone') {
+        phone = this.value    ; // год из формы
      }
     if (this.name == 'year') {
-       year = this.value    ; // год из формы
+        year = this.value    ; // год из формы
      }
     }
 
     // Определяем какие данные из какой формы передадуться в CarrotQuest.
-  function sendToCarrot(){
-
-    
+    function sendToCarrot(){  
     if ( name != undefined || name != '') { // Обновление имени пользователя если задано 
             carrotquest.identify({
                 '$name': name
@@ -108,7 +112,8 @@ window.mySuccessFunction = function($form){
         "Url-формы": decodeURI(location.href+'#'+formname),
         "$url": decodeURI(location.href),
         "$name": name,
-        "Email": email
+        "Email": email,
+        "Вся информация из формы": allInfo
     });
 
     /* Отправка данных в диалоги через hook */
@@ -120,7 +125,8 @@ window.mySuccessFunction = function($form){
             "form_url": decodeURI(location.href+'#'+formname),
             "url": decodeURI(location.href),
             "name": name,
-            "email": email
+            "email": email,
+            "Вся информация из формы": allInfo
         }
     })
  }
