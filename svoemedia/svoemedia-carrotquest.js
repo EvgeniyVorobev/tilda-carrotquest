@@ -35,12 +35,12 @@ $(document).ready(function(){
 
     window.mySuccessFunction = function($form){
 
-        var text,text1,text2,text3,text4,text5,text6,
-        checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
+    var text,text1,text2,text3,text4,text5,text6,
+    checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
     var formArray = $form.serializeArray(); // Массив из данных формы
 
-    var allInfo = {};  // #form44227242 
+    var allInfoObject = {};  // Object with all info   
     var inputInformation = $($form).find('input');
     var textareaInformation = $($form).find('textarea');
     var selectInformation = $($form).find('select');
@@ -68,9 +68,11 @@ $(document).ready(function(){
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
+    var allInfoJson = JSON.stringify(allInfoObject); // Json with all info
+    console.log(allInfoJson);
     // Записываем существующие имя пользователя в поле
     function filterArray() {    
-        if (this.name == 'formname') {
+    if (this.name == 'formname') {
         formname = this.value   ; // скрытый Идентификатор(Имя) формы для передачи в керрот
     }
     if (this.name == 'name' || this.name == 'Name') { // Проверка на налоичие имени
@@ -137,7 +139,7 @@ $(document).ready(function(){
         "$url": decodeURI(location.href),
         "$name": name,
         "Email": email,
-        allInfo
+        allInfoJson
     });
 
     /* Отправка данных в диалоги через hook */
@@ -150,7 +152,7 @@ $(document).ready(function(){
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
-            allInfo
+            allInfoJson
         }
     })
 }
