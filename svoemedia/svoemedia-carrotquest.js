@@ -36,8 +36,8 @@ setTimeout(function(){
 window.mySuccessFunction = function($form){
 
     var text,text1,text2,text3,text4,text5,text6,
-    checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6
-    formname,name,familyname,email,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
+    checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
+    formname,name,familyname,email,phone,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
     var formArray = $form.serializeArray(); // Массив из данных формы
     var allInfo = $form.serializeArray(); // Массив из данных формы
 
