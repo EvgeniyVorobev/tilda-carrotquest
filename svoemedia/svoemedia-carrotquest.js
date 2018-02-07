@@ -41,9 +41,9 @@ $(document).ready(function(){
     var formArray = $form.serializeArray(); // Массив из данных формы
 
     var allInfo = {};  // #form44227242 
-    var inputInformation = $('$form input');
-    var textareaInformation = $('$form textarea');
-    var selectInformation = $('$form select');
+    var inputInformation = $($form).find('input');
+    var textareaInformation = $($form).find('textarea');
+    var selectInformation = $($form).find('select');
 
     inputInformation.each(function () {
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
