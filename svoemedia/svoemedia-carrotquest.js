@@ -61,7 +61,7 @@ window.mySuccessFunction = function($form){
     if (this.name == 'email' || this.name == 'Email') {
         email = this.value   ; // email из формы
      }
-    if (this.name == 'phone' || this.name = 'Phone') {
+    if (this.name == 'phone' || this.name == 'Phone') {
         phone = this.value    ; // год из формы
      }
     if (this.name == 'year') {
