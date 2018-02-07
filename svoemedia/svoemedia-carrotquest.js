@@ -137,7 +137,7 @@ $(document).ready(function(){
         "$url": decodeURI(location.href),
         "$name": name,
         "Email": email,
-        "Вся информация из формы": allInfo
+        allInfo
     });
 
     /* Отправка данных в диалоги через hook */
@@ -150,7 +150,7 @@ $(document).ready(function(){
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
-            "allInfo": allInfo
+            allInfo
         }
     })
 }
