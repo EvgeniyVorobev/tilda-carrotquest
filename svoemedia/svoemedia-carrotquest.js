@@ -40,7 +40,7 @@ $(document).ready(function(){
     formname,name,familyname,email,phone,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
     var formArray = $form.serializeArray(); // Массив из данных формы
 
-    var allInfoObject = {};  // Object with all info   
+    var allInfo = {};  // Object with all info   
     var inputInformation = $($form).find('input');
     var textareaInformation = $($form).find('textarea');
     var selectInformation = $($form).find('select');
@@ -69,6 +69,7 @@ $(document).ready(function(){
     $.each(formArray, filterArray); 
 
     var allInfoJson = JSON.stringify(allInfoObject); // Json with all info
+
     console.log(allInfoJson);
     // Записываем существующие имя пользователя в поле
     function filterArray() {    
