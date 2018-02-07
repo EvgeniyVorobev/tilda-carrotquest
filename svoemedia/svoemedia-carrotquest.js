@@ -153,7 +153,7 @@ $(document).ready(function(){
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
-            allInfoJson
+            "allInfo": allInfoJson
         }
     })
 }
