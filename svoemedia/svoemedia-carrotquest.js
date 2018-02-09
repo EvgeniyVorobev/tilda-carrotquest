@@ -72,6 +72,8 @@ $(document).ready(function(){
         if ( this.value != '' && this.name != '') {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
+            console.log(this.name);
+            console.log(this.value);
         }
     })
 
