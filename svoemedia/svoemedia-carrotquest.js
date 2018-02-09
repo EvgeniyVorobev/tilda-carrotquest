@@ -71,13 +71,9 @@ $(document).ready(function(){
         }
     })
     optionInformation.each(function () {
-                    console.log(this.name);
-            console.log(this.value);
-        if ( this.value != '' && this.name != undefined) {
+        if ( this.value != '' && this.name != undefined && this.name != '') {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
-            console.log(this.name);
-            console.log(this.value);
         }
     })
 
