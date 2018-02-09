@@ -45,12 +45,13 @@ $(document).ready(function(){
     var textareaInformation = $($form).find('textarea');
     var selectInformation = $($form).find('select');
     var optionInformation = $($form).find('option');
+    var checkboxInformation = $($form).find("input[type='checkbox']");
 
     inputInformation.each(function () {
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
             && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
-            && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '' && this.type != 'radio' 
+            && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '' && this.type != 'radio' && this.type = 'Checkbox' && this.type = 'checkbox' 
             && this.name != "formname") {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
@@ -58,6 +59,15 @@ $(document).ready(function(){
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
          }
+    })
+ checkboxInformation.each(function () {
+        if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
+            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
+            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
+            && this.name != 'tildaspec-tildacaptcha' && this.value != '') {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
+         } 
     })
     textareaInformation.each(function () {
         if ( this.value != '') {
