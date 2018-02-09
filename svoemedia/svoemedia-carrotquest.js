@@ -147,7 +147,7 @@ $(document).ready(function(){
  /* Условие для Всех остальных форм у которых не задано имя формы (по умолчанию)*/
  if (formname == undefined) {
     /*Отправка данных в lead*/
-    carrotquest.track('Заполнил форму', allInfo_str);
+    carrotquest.track('Заполнил форму', allInfo);
 
     /* Отправка данных в диалоги через hook */
     $.ajax({
