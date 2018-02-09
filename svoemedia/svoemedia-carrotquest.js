@@ -53,7 +53,7 @@ $(document).ready(function(){
             && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '' && this.type != 'radio') {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
-         } else if (this.type == 'radio' && this.type.checked) {
+         } else if (this.type == 'radio' && this.checked) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
          }
