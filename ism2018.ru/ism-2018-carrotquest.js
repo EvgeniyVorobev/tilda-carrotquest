@@ -17,7 +17,7 @@ carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
 $(document).ready(function(){
     var user_id;
     var authToken = 'app.14283.2acf6f71e5667fc5c45cbc7edf127f69de3e23fb8f6524cf'; // Токен
-    var scriptSrc = 'https://hook.io/evgeniyvorobev/ism2018-carrotquest'
+    var scriptSrc = 'https://hook.io/evgeniyvorobev/ism2018-carrotquest';
 
 setTimeout(function(){
     if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
