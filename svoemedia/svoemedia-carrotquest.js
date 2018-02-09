@@ -69,7 +69,7 @@ $(document).ready(function(){
         }
     })
     optionInformation.each(function () {
-        if ( this.value != '' && this.name != '') {
+        if ( this.value != '' && this.name != undefined) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
             console.log(this.name);
