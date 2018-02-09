@@ -39,7 +39,6 @@ $(document).ready(function(){
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
     var formArray = $form.serializeArray(); // Массив из данных формы
-
     var allInfo = {};  // Object with all info   
     var inputInformation = $($form).find('input');
     var textareaInformation = $($form).find('textarea');
@@ -69,6 +68,9 @@ $(document).ready(function(){
 
     var allInfo_str = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
     
+    console.log('allInfo ',allInfo)
+    console.log('allInfo_str ',allInfo_str);
+
     // Записываем существующие имя пользователя в поле
     function filterArray() {    
     if (this.name == 'formname') {
