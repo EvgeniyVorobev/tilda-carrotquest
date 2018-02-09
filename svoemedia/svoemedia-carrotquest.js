@@ -39,7 +39,8 @@ $(document).ready(function(){
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Определяем переменные в которые запишем данные для передачи.
     var formArray = $form.serializeArray(); // Массив из данных формы
-    var allInfo = {};  // Object with all info   
+    var allInfo = {};  // Object with all info  
+    var allInfo_str = {} // String with all info 
     var inputInformation = $($form).find('input');
     var textareaInformation = $($form).find('textarea');
     var selectInformation = $($form).find('select');
@@ -49,6 +50,7 @@ $(document).ready(function(){
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
             && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
             && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '') {
+
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
          }
