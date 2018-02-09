@@ -74,13 +74,14 @@ $(document).ready(function(){
         if ( this.value != '' && this.name != undefined ) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
+            console.log('не проходит');
         }
     })
 
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
-
+console.log(JSON.stringify(allInfo_str));
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
     console.log('allInfo_str ',allInfo_str);
     console.log('allInfo ',allInfo)
