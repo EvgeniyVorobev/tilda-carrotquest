@@ -50,8 +50,10 @@ $(document).ready(function(){
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
             && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
-            && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '') {
-
+            && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '' && this.type != 'radio') {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
+         } else if (this.type == 'radio' && this.type.checked) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
          }
