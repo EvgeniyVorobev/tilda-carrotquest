@@ -33,6 +33,8 @@ $(document).ready(function(){
 }
 },500)
 
+console.log(Date());
+
     window.mySuccessFunction = function($form){
 
     var text,text1,text2,text3,text4,text5,text6,
