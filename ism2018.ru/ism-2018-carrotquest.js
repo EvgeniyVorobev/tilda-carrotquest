@@ -52,25 +52,19 @@ console.log(Date());
     inputInformation.each(function () {
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
-            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
-            && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '' && this.type != 'radio' && this.type = 'Checkbox' && this.type = 'checkbox' 
+            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
+            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
             && this.name != "formname") {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
          } else if (this.type == 'radio' && this.checked) {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
-         }
-    })
- checkboxInformation.each(function () {
-        if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
-            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
-            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
-            && this.name != 'tildaspec-tildacaptcha' && this.value != '') {
+         } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
-         } 
-    })
+         }
+     })
     textareaInformation.each(function () {
         if ( this.value != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
