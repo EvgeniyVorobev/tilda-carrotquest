@@ -153,12 +153,12 @@ console.log(Date());
  /* Условие для Всех остальных форм у которых не задано имя формы (по умолчанию)*/
  if (formname == undefined) {
     /*Отправка данных в lead*/
-    carrotquest.track('Заполнил форму', allInfo);
+    carrotquest.track('Заполнил форму без имени', allInfo);
 
     /* Отправка данных в диалоги через hook */
     $.ajax({
         type: 'POST',
-        url: 'https://hook.io/evgeniyvorobev/provedenie-carrotquest-carrotquest',
+        url: 'https://hook.io/evgeniyvorobev/provedenie-carrotquest',
         data: { 
             "user_id": user_id,
             "form_url": decodeURI(location.href+'#'+formname),
