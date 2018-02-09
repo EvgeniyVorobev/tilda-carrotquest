@@ -1,24 +1,26 @@
 <!-- CarrotQuest BEGIN -->
-  (function(){
+(function(){
     function Build(name, args){return function(){window.carrotquestasync.push(name, arguments);} }
     if (typeof carrotquest === 'undefined') {
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
-      s.src = '//cdn.carrotquest.io/api.min.js';
-      var x = document.getElementsByTagName('head')[0]; x.appendChild(s);
-      window.carrotquest = {}; window.carrotquestasync = []; carrotquest.settings = {};
-      var m = ['connect', 'track', 'identify', 'auth', 'open', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];
-      for (var i = 0; i < m.length; i++) carrotquest[m[i]] = Build(m[i]);
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+        s.src = '//cdn.carrotquest.io/api.min.js';
+        var x = document.getElementsByTagName('head')[0]; x.appendChild(s);
+        window.carrotquest = {}; window.carrotquestasync = []; carrotquest.settings = {};
+        var m = ['connect', 'track', 'identify', 'auth', 'open', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];
+        for (var i = 0; i < m.length; i++) carrotquest[m[i]] = Build(m[i]);
     }
-  })();
-carrotquest.connect('14283-c7e7d643459a3dccf860153ca8');
+})();
+carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
 <!-- CarrotQuest END -->
+
 
 $(document).ready(function(){
     var user_id;
     var authToken = 'app.14283.2acf6f71e5667fc5c45cbc7edf127f69de3e23fb8f6524cf'; // Токен
+    var scriptSrc = 'https://hook.io/evgeniyvorobev/ism2018-carrotquest'
 
-    setTimeout(function(){
-        if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
+setTimeout(function(){
+    if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
     user_id = carrotquest.data.user.id;  // Записываем уникальный идентификатор пользователя Carrot.
     $.ajax ({
         type: 'GET',
@@ -54,9 +56,16 @@ console.log(Date());
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
             && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
             && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
-            && this.name != "formname") {
+            && this.name != "formname" && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
+         } else if ( this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
+            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
+            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
+            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
+            && this.name != "formname" && this.placeholder.length < 1) {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
          } else if (this.type == 'radio' && this.checked) {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
@@ -66,9 +75,12 @@ console.log(Date());
          }
      })
     textareaInformation.each(function () {
-        if ( this.value != '') {
+        if ( this.value != '' && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
+        } else {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
         }
     })
     selectInformation.each(function () {
@@ -134,7 +146,7 @@ console.log(Date());
     /* ==== Отправка данных в carrot диалоги через hook */
         $.ajax({
             type: 'POST',
-            url: 'https://hook.io/evgeniyvorobev/ism2018-carrotquest',
+            url: scriptSrc,
             data: { 
                 "user_id": user_id,
                 "form_name": formname,
@@ -152,12 +164,12 @@ console.log(Date());
  /* Условие для Всех остальных форм у которых не задано имя формы (по умолчанию)*/
  if (formname == undefined) {
     /*Отправка данных в lead*/
-    carrotquest.track('Заполнил форму', allInfo);
+    carrotquest.track('Заполнил форму без имени', allInfo);
 
     /* Отправка данных в диалоги через hook */
     $.ajax({
         type: 'POST',
-        url: 'https://hook.io/evgeniyvorobev/ism2018-carrotquest',
+        url: scriptSrc,
         data: { 
             "user_id": user_id,
             "form_url": decodeURI(location.href+'#'+formname),
