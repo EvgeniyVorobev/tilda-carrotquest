@@ -74,9 +74,12 @@ console.log(Date());
          }
      })
     textareaInformation.each(function () {
-        if ( this.value != '') {
+        if ( this.value != '' && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
+        } else {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
         }
     })
     selectInformation.each(function () {
