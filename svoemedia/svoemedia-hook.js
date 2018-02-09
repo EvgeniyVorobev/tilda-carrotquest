@@ -39,7 +39,7 @@ var options = {
   headers: { 'Content-type':'application/x-www-form-urlencoded','Content-type':'application/json'},
   form: {
   auth_token: token,
-  body: 'Была заполнена форма пользователем '+params.name+'<br>; Ссылка на страницу с формой: '+encodeURI(params.url)+' ;<br><br>Вся полученная информация: <br>'+params.allInfo 
+  body: 'Была заполнена форма пользователем '+params.name+' ;<br> Ссылка на страницу с формой: '+encodeURI(params.url)+' ;<br><br>Вся полученная информация: <br>'+params.allInfo 
   }
 }
   request(options, function(err, res, body){

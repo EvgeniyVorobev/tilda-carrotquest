@@ -71,6 +71,8 @@ $(document).ready(function(){
         }
     })
     optionInformation.each(function () {
+                    console.log(this.name);
+            console.log(this.value);
         if ( this.value != '' && this.name != undefined) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
@@ -132,7 +134,7 @@ $(document).ready(function(){
             "$url": decodeURI(location.href)
         });
 
-        /* ==== Отправка данных в carrot диалоги через hook */
+    /* ==== Отправка данных в carrot диалоги через hook */
         $.ajax({
             type: 'POST',
             url: 'https://hook.io/evgeniyvorobev/svoemedia-carrotquest',
