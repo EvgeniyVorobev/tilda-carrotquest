@@ -63,15 +63,12 @@ $(document).ready(function(){
             allInfo[this.name] = ' '+this.value+' <br>';
         }
     })
-    console.log(allInfo)
 
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
     var allinfoDialog = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
     
-
-    console.log(allInfoJson);
     // Записываем существующие имя пользователя в поле
     function filterArray() {    
     if (this.name == 'formname') {
