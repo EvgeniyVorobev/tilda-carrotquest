@@ -67,7 +67,7 @@ $(document).ready(function(){
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
-    var allinfoDialog = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
+    var allInfo_str = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
     
     // Записываем существующие имя пользователя в поле
     function filterArray() {    
@@ -132,6 +132,7 @@ $(document).ready(function(){
 
  /* Условие для Всех остальных форм у которых не задано имя формы (по умолчанию)*/
  if (formname == undefined) {
+    /*Отправка данных в lead*/
     carrotquest.track('Заполнил форму', allInfo);
 
     /* Отправка данных в диалоги через hook */
@@ -144,7 +145,7 @@ $(document).ready(function(){
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
-            "allInfo": allinfoDialog
+            "allInfo": allInfo_str
         }
     })
 }
