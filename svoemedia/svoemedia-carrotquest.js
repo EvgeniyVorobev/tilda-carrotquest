@@ -78,10 +78,11 @@ $(document).ready(function(){
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
-    var allInfo_str = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
-    
-    console.log('allInfo ',allInfo)
+
+    var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
     console.log('allInfo_str ',allInfo_str);
+    console.log('allInfo ',allInfo)
+   
 
     // Записываем существующие имя пользователя в поле
     function filterArray() {    
