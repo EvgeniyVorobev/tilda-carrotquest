@@ -44,6 +44,7 @@ $(document).ready(function(){
     var inputInformation = $($form).find('input');
     var textareaInformation = $($form).find('textarea');
     var selectInformation = $($form).find('select');
+    var optionInformation = $($form).find('option');
 
     inputInformation.each(function () {
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
@@ -61,8 +62,14 @@ $(document).ready(function(){
             allInfo[this.name] = this.value;
         }
     })
-      selectInformation.each(function () {
+    selectInformation.each(function () {
         if ( this.value != '') {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
+        }
+    })
+    optionInformation.each(function () {
+        if ( this.value != '' && this.name != '') {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
         }
