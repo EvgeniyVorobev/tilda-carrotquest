@@ -65,18 +65,18 @@ $(document).ready(function(){
         }
     })
     selectInformation.each(function () {
-        if ( this.value != '') {
+        if ( this.value != '' && this.name != undefined) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
         }
     })
-    optionInformation.each(function () {
-        if ( this.value != '' && this.name != undefined ) {
-            allInfo_str[this.name] = ' '+this.value+' <br>';
-            allInfo[this.name] = this.value;
-            console.log('не проходит');
-        }
-    })
+    // optionInformation.each(function () {
+    //     if ( this.value != '' && this.name != undefined ) {
+    //         allInfo_str[this.name] = ' '+this.value+' <br>';
+    //         allInfo[this.name] = this.value;
+    //         console.log('не проходит');
+    //     }
+    // })
 
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
