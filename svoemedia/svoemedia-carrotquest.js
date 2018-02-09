@@ -68,7 +68,8 @@ $(document).ready(function(){
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
-    var allInfoJson = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
+    var allinfoDialog = JSON.stringify(allInfo).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
+    
 
     console.log(allInfoJson);
     // Записываем существующие имя пользователя в поле
@@ -119,7 +120,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'POST',
             url: 'https://hook.io/evgeniyvorobev/svoemedia-carrotquest',
-            data:{ 
+            data: { 
                 "user_id": user_id,
                 "form_name": formname,
                 "form_url": decodeURI(location.href+'#'+formname),
@@ -134,14 +135,7 @@ $(document).ready(function(){
 
  /* Условие для Всех остальных форм у которых не задано имя формы (по умолчанию)*/
  if (formname == undefined) {
-    carrotquest.track('Заполнил форму',{
-        "Имя формы": formname,
-        "Url-формы": decodeURI(location.href+'#'+formname),
-        "$url": decodeURI(location.href),
-        "$name": name,
-        "Email": email,
-        allInfoJson
-    });
+    carrotquest.track('Заполнил форму', allInfo);
 
     /* Отправка данных в диалоги через hook */
     $.ajax({
@@ -153,7 +147,7 @@ $(document).ready(function(){
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
-            "allInfo": allInfoJson
+            "allInfo": allinfoDialog
         }
     })
 }
