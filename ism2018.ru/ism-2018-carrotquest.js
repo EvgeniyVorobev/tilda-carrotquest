@@ -138,7 +138,7 @@ console.log(Date());
             '$name': name
         });
     }
-
+    
     /* ==== Отправка данных в лиды */  
     if (formname != undefined) { // Условие для формы == имя_формы*/
         carrotquest.track('Заполнил форму '+formname, allInfo);
