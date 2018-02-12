@@ -2,23 +2,25 @@
 (function(){
     function Build(name, args){return function(){window.carrotquestasync.push(name, arguments);} }
     if (typeof carrotquest === 'undefined') {
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
-      s.src = '//cdn.carrotquest.io/api.min.js';
-      var x = document.getElementsByTagName('head')[0]; x.appendChild(s);
-      window.carrotquest = {}; window.carrotquestasync = []; carrotquest.settings = {};
-      var m = ['connect', 'track', 'identify', 'auth', 'open', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];
-      for (var i = 0; i < m.length; i++) carrotquest[m[i]] = Build(m[i]);
-  }
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+        s.src = '//cdn.carrotquest.io/api.min.js';
+        var x = document.getElementsByTagName('head')[0]; x.appendChild(s);
+        window.carrotquest = {}; window.carrotquestasync = []; carrotquest.settings = {};
+        var m = ['connect', 'track', 'identify', 'auth', 'open', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];
+        for (var i = 0; i < m.length; i++) carrotquest[m[i]] = Build(m[i]);
+    }
 })();
-carrotquest.connect('7133-b8bd2e320f9d0a7743362aae6a4');
+carrotquest.connect('7133-b8bd2e320f9d0a7743362aae6a4')
 <!-- CarrotQuest END -->
+
 
 $(document).ready(function(){
     var user_id;
     var authToken = 'app.7133.ebdfb4c903b8ae106fc5e7a741c0dbfa5e375bd7d1e23206'; // Токен
+    var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'
 
-    setTimeout(function(){
-        if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
+setTimeout(function(){
+    if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
     user_id = carrotquest.data.user.id;  // Записываем уникальный идентификатор пользователя Carrot.
     $.ajax ({
         type: 'GET',
@@ -33,6 +35,8 @@ $(document).ready(function(){
 }
 },500)
 
+console.log(Date());
+
     window.mySuccessFunction = function($form){
 
     var text,text1,text2,text3,text4,text5,text6,
@@ -45,21 +49,36 @@ $(document).ready(function(){
     var textareaInformation = $($form).find('textarea');
     var selectInformation = $($form).find('select');
     var optionInformation = $($form).find('option');
+    var checkboxInformation = $($form).find("input[type='checkbox']");
 
     inputInformation.each(function () {
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
             && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
-            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments' 
-            && this.name != 'tildaspec-tildacaptcha' && this.value != '' && this.name != '' && this.type != 'radio') {
+            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
+            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
+            && this.name != "formname" && this.placeholder != '') {
+            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+            allInfo[this.placeholder] = this.value;
+         } else if ( this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
+            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
+            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
+            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
+            && this.name != "formname" && this.placeholder.length < 1) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
          } else if (this.type == 'radio' && this.checked) {
+            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+            allInfo[this.placeholder] = this.value;
+         } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
          }
-    })
+     })
     textareaInformation.each(function () {
-        if ( this.value != '') {
+        if ( this.value != '' && this.placeholder != '') {
+            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+            allInfo[this.placeholder] = this.value;
+        } else {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
         }
@@ -81,7 +100,7 @@ $(document).ready(function(){
     // Фильтруем массив из данных для передачи в CarrotQuest. 
     $.each(formArray, filterArray); 
 
-console.log(JSON.stringify(allInfo_str));
+    console.log(JSON.stringify(allInfo_str));
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // Json with all info
     console.log('allInfo_str ',allInfo_str);
     console.log('allInfo ',allInfo)
@@ -122,26 +141,20 @@ console.log(JSON.stringify(allInfo_str));
 
     /* ==== Отправка данных в лиды */  
     if (formname != undefined) { // Условие для формы == имя_формы*/
-        carrotquest.track('Заполнил форму '+formname, {
-            "Имя формы": formname,
-            "Url-формы": decodeURI(location.href+'#'+formname),
-            "$name": name,
-            "Фамилия": familyname,
-            "Email": email,
-            "$url": decodeURI(location.href)
-        });
+        carrotquest.track('Заполнил форму '+formname, allInfo);
 
     /* ==== Отправка данных в carrot диалоги через hook */
         $.ajax({
             type: 'POST',
-            url: 'https://hook.io/evgeniyvorobev/svoemedia-carrotquest',
+            url: scriptSrc,
             data: { 
                 "user_id": user_id,
                 "form_name": formname,
                 "form_url": decodeURI(location.href+'#'+formname),
                 "url": decodeURI(location.href),
                 "name": name,
-                "email": email
+                "email": email,
+                "allInfo": allInfo_str
             }
         })
     }
@@ -151,12 +164,12 @@ console.log(JSON.stringify(allInfo_str));
  /* Условие для Всех остальных форм у которых не задано имя формы (по умолчанию)*/
  if (formname == undefined) {
     /*Отправка данных в lead*/
-    carrotquest.track('Заполнил форму', allInfo);
+    carrotquest.track('Заполнил форму без имени', allInfo);
 
     /* Отправка данных в диалоги через hook */
     $.ajax({
         type: 'POST',
-        url: 'https://hook.io/evgeniyvorobev/svoemedia-carrotquest',
+        url: scriptSrc,
         data: { 
             "user_id": user_id,
             "form_url": decodeURI(location.href+'#'+formname),
