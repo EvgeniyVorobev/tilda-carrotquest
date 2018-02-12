@@ -17,7 +17,7 @@ carrotquest.connect('7133-b8bd2e320f9d0a7743362aae6a4')
 $(document).ready(function(){
     var user_id;
     var authToken = 'app.7133.ebdfb4c903b8ae106fc5e7a741c0dbfa5e375bd7d1e23206'; // Токен
-    var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'
+    var scriptSrc = 'https://hook.io/evgeniyvorobev/svoemedia-carrotquest'
 
 setTimeout(function(){
     if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
