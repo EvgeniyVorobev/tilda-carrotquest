@@ -41,18 +41,19 @@ setTimeout(function(){
 
 $('form').submit(function(e){  
     if ($(e.target).closest('form').is('[simpleform]') && $('#'+this.id).valid()) { // if form has simpleform attribute and Validate with Jquery Validation.  
-       
+      
     var text,text1,text2,text3,text4,text5,text6,
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
-    var formArray = $form.serializeArray(); // Massive with data from $form.
+    var simpleform = $(e.target).closest('form');
+    var formArray = simpleform.serializeArray(); // Massive with data from $form.
     var allInfo = {};  // Object with all info for transfering. 
     var allInfo_str = {} // String with all info for transfering.
-    var inputInformation = $($form).find('input');
-    var textareaInformation = $($form).find('textarea');
-    var selectInformation = $($form).find('select');
-    var optionInformation = $($form).find('option');
-    var checkboxInformation = $($form).find("input[type='checkbox']");
+    var inputInformation = simpleform.find('input');
+    var textareaInformation = simpleform.find('textarea');
+    var selectInformation = simpleform.find('select');
+    var optionInformation = simpleform.find('option');
+    var checkboxInformation = simpleform.find("input[type='checkbox']");
 
 
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
