@@ -38,9 +38,9 @@ user_id;
 
 
 window.evg = function(a,target){
-if (a == undefined || a == '') { return }
+if (a == undefined || a == '') { return } // if form answer not added;
 var test_result = a; // answer from other script
-form_id = target.id;
+var form_id = target.id;
 console.log('test-result',test_result);
 console.log(user_id);
 setTimeout(function() {
