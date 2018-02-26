@@ -14,13 +14,19 @@ carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
 <!-- CarrotQuest END -->
 
 
-$(document).ready(function(){
-    var user_id;
+window.evg = function(a,target){
+    if (a == undefined || a == '') { return }
+   var test_result = a; // answer from other script
+form_id = target.id;
+console.log(form_id);
+console.log($(target).is('[simpleform]') );
+console.log('test-result',test_result);
+var user_id;
     var authToken = 'app.14055.46270bd4201d66c944a361bf1bae381f65d2516b149a4808'; // Token from CQ.
-    var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
+    var scriptSrc = ' xxxx https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
 
-setTimeout(function(){
-    if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
+    setTimeout(function(){
+        if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
     user_id = carrotquest.data.user.id;  // Uniq id of CQ user.
     $.ajax ({
         type: 'GET',
@@ -35,17 +41,14 @@ setTimeout(function(){
 }
 },500)
 
+    sendSimpleForm()
 
-
-/*Catch information from forms with attr simpleform fields. !*/
-
-$('form').submit(function(e){  
-    if ($(e.target).closest('form').is('[simpleform]') && $('#'+this.id).valid()) { // if form has simpleform attribute and Validate with Jquery Validation.  
-      
-    var text,text1,text2,text3,text4,text5,text6,
-    checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
+    /*Catch information from forms with attr simpleform fields. !*/
+    function sendSimpleForm(){
+    if ($(target).is('[simpleform]') && $('#'+target.id).valid()) { // if form has simpleform attribute and Validate with Jquery Validation.  
+    var text,text1,text2,text3,text4,text5,text6,checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
-    var simpleform = $(e.target).closest('form');
+    var simpleform = $('#'+target.id) // Id of the form
     var formArray = simpleform.serializeArray(); // Massive with data from $form.
     var allInfo = {};  // Object with all info for transfering. 
     var allInfo_str = {} // String with all info for transfering.
@@ -55,56 +58,46 @@ $('form').submit(function(e){
     var optionInformation = simpleform.find('option');
     var checkboxInformation = simpleform.find("input[type='checkbox']");
 
-
-    inputInformation.each(function () {  // Write input data from $form, that meet requirements.
-        if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
-            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
-            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
-            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
-            && this.name != "formname" && this.placeholder != '') {
-            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-            allInfo[this.placeholder] = this.value;
-         } else if ( this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
-            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
-            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
-            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
-            && this.name != "formname" && this.placeholder.length < 1) {
-            allInfo_str[this.name] = ' '+this.value+' <br>';
-            allInfo[this.name] = this.value;
-         } else if (this.type == 'radio' && this.checked) {
-            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-            allInfo[this.placeholder] = this.value;
-         } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
-            allInfo_str[this.name] = ' '+this.value+' <br>';
-            allInfo[this.name] = this.value;
-         }
-     })
-    textareaInformation.each(function () { // Write textarea data from $form, that meet requirements.
-        if ( this.value != '' && this.placeholder != '') {
-            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-            allInfo[this.placeholder] = this.value;
-        } else {
+    console.log(formArray);
+    inputInformation.each(function () {  // Write input data from simpleform, that meet requirements.
+        if (this.name != "formname" && this.getAttribute('fieldname') != '' && this.getAttribute('fieldname') != undefined && this.value != '') {  // if has fieldname attribute and value
+            allInfo_str[this.getAttribute('fieldname')] = ' '+this.value+' <br>';
+            allInfo[this.getAttribute('fieldname')] = this.value;
+        } else if (this.name != '' && this.value != '') { // if has name attribute and value
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
         }
     })
-    selectInformation.each(function () { // Write select data from $form, that meet requirements.
+    textareaInformation.each(function () { // Write textarea data from simpleform, that meet requirements.
+        if ( this.value != '' && this.getAttribute('fieldname') != '' && this.name != "formname") {
+            allInfo_str[this.getAttribute('fieldname')] = ' '+this.value+' <br>';
+            allInfo[this.getAttribute('fieldname')] = this.value;
+        } else if (this.name != '' && this.value != '')  {
+            allInfo_str[this.name] = ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
+        }
+    })
+    selectInformation.each(function () { // Write select data from simpleform, that meet requirements.
         if ( this.value != '' && this.name != undefined && this.name != '') {
+            allInfo_str[this.getAttribute('fieldname')] = ' '+this.value+' <br>';
+            allInfo[this.getAttribute('fieldname')] = this.value;
+        } else if (this.name != '' && this.value != '')  {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
         }
     })
- 
+    allInfo_str['Результат Теста'] = ' '+test_result+' <br>'; // Added test results
+    allInfo['Результат Теста'] = test_result; // Added test results
     $.each(formArray, filterArray); // Filtering the massive formArray.
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
 
-    // console.log(JSON.stringify(allInfo_str));
-    // console.log('allInfo_str ',allInfo_str);
-    // console.log('allInfo ',allInfo)
-   
+    console.log(JSON.stringify(allInfo_str));
+    console.log('allInfo_str ',allInfo_str);
+    console.log('allInfo ',allInfo)
+
     // Filter $form, and set value if there is.
     function filterArray() {    
-    if (this.name == 'formname') {
+        if (this.name == 'formname') {
         formname = this.value   ; // hidden form name from hidden input field.
     }
     if (this.name == 'name' || this.name == 'Name') { // search for name.
@@ -121,7 +114,7 @@ $('form').submit(function(e){
     } 
 }
 
- // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
+    // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
 
     /* Send Data to CQ */
     function sendToCarrot(){  
@@ -129,7 +122,7 @@ $('form').submit(function(e){
         carrotquest.identify({
             '$name': name
         });
-    }
+}
 
     if (formname != undefined) { // if $form have formname input-field.
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
@@ -143,14 +136,14 @@ $('form').submit(function(e){
                 "url": decodeURI(location.href),
                 "name": name,
                 "email": email,
+                "Результат теста": test_result,
                 "allInfo": allInfo_str
             }
         })
     }
 
-    
-     if (formname == undefined) { // if $form didn't have formname input-field.
-    /*Отправка данных в lead*/
+    if (formname == undefined) { // if $form didn't have formname input-field.
+        /*Отправка данных в lead*/
     carrotquest.track('Заполнил форму без имени', allInfo);
 
     /* Отправка данных в диалоги через hook */
@@ -165,21 +158,20 @@ $('form').submit(function(e){
             "email": email,
             "allInfo": allInfo_str
         }
-     })
-    }
-    $('#carrotUsername').text(name);
-  }
-    sendToCarrot(); 
+    })
+}
+$('#carrotUsername').text(name);
+}
+sendToCarrot(); 
 
-    } 
-})  
-
-/* End of simpleform */
+} 
+}
+/* End of Simpleform  */
 
 
 
 /* Function whitch run after submit event - Tilda Form (not payments form's). */
-    window.mySuccessFunction = function($form){
+window.mySuccessFunction = function($form){
 
     var text,text1,text2,text3,text4,text5,text6,
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
@@ -201,22 +193,22 @@ $('form').submit(function(e){
             && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
             && this.name != "formname" && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-            allInfo[this.placeholder] = this.value;
-         } else if ( this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
-            && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
-            && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
-            && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
-            && this.name != "formname" && this.placeholder.length < 1) {
-            allInfo_str[this.name] = ' '+this.value+' <br>';
-            allInfo[this.name] = this.value;
-         } else if (this.type == 'radio' && this.checked) {
-            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-            allInfo[this.placeholder] = this.value;
-         } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
-            allInfo_str[this.name] = ' '+this.value+' <br>';
-            allInfo[this.name] = this.value;
-         }
-     })
+        allInfo[this.placeholder] = this.value;
+    } else if ( this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
+        && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
+        && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
+        && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
+        && this.name != "formname" && this.placeholder.length < 1) {
+        allInfo_str[this.name] = ' '+this.value+' <br>';
+        allInfo[this.name] = this.value;
+    } else if (this.type == 'radio' && this.checked) {
+        allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+        allInfo[this.placeholder] = this.value;
+    } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
+        allInfo_str[this.name] = ' '+this.value+' <br>';
+        allInfo[this.name] = this.value;
+    }
+})
     textareaInformation.each(function () { // Write textarea data from $form, that meet requirements.
         if ( this.value != '' && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
@@ -232,17 +224,17 @@ $('form').submit(function(e){
             allInfo[this.name] = this.value;
         }
     })
- 
+
     $.each(formArray, filterArray); // Filtering the massive formArray.
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
 
     // console.log(JSON.stringify(allInfo_str));
     // console.log('allInfo_str ',allInfo_str);
     // console.log('allInfo ',allInfo)
-   
+
     // Filter $form, and set value if there is.
     function filterArray() {    
-    if (this.name == 'formname') {
+        if (this.name == 'formname') {
         formname = this.value   ; // hidden form name from hidden input field.
     }
     if (this.name == 'name' || this.name == 'Name') { // search for name.
@@ -261,13 +253,13 @@ $('form').submit(function(e){
 
  // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
 
-    /* Send Data to CQ */
-    function sendToCarrot(){  
+ /* Send Data to CQ */
+ function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
-    }
+}
 
     if (formname != undefined) { // if $form have formname input-field.
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
@@ -286,9 +278,9 @@ $('form').submit(function(e){
         })
     }
 
-    
+
      if (formname == undefined) { // if $form didn't have formname input-field.
-    /*Отправка данных в lead*/
+        /*Отправка данных в lead*/
     carrotquest.track('Заполнил форму без имени', allInfo);
 
     /* Отправка данных в диалоги через hook */
@@ -303,11 +295,11 @@ $('form').submit(function(e){
             "email": email,
             "allInfo": allInfo_str
         }
-     })
-    }
-    $('#carrotUsername').text(name);
-  }
-    sendToCarrot();
+    })
+}
+$('#carrotUsername').text(name);
+}
+sendToCarrot();
 }
 
     // if press Submit , then run mySuccessFunction;
@@ -330,9 +322,6 @@ $('form').submit(function(e){
     },2000)
 
 
+};
 
-
-
-
-
-});
+  // evg() // Execude script
