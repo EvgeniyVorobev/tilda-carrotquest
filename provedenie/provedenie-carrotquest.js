@@ -33,7 +33,7 @@ var hidden_name = setInterval(function(){
     }) ;
 }
 },500)
-user_id();
+user_id;
 
 
 window.evg = function(a,target){
