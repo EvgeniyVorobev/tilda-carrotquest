@@ -37,6 +37,7 @@ var hidden_name = setInterval(function() { // Username from CQ
 
 
 /* Function for interview form */
+window.evgCarrot = {};
 window.evgCarrot.interviewForm = function(a,target){
 if (a == undefined || a == '') { return } // if form has no answer - abort.
 var test_result = a; // test result from send script.
