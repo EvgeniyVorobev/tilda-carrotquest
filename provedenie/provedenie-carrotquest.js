@@ -34,7 +34,7 @@ var hidden_name = setInterval(function(){
     clearInterval(hidden_name)
 }
 },500)
-user_id;
+// user_id;
 
 
 window.evg = function(a,target){
