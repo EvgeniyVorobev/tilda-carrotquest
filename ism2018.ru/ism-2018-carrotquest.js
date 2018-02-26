@@ -12,7 +12,6 @@
       }
     })();
   carrotquest.connect('14283-c7e7d643459a3dccf860153ca8');
-
 <!-- CarrotQuest END -->
 
 var authToken = 'app.14283.2acf6f71e5667fc5c45cbc7edf127f69de3e23fb8f6524cf'; // Token from CQ.
