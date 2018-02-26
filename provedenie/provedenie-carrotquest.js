@@ -15,8 +15,9 @@ carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
 
 var authToken = 'app.14055.46270bd4201d66c944a361bf1bae381f65d2516b149a4808'; // Token from CQ.
 var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
-var user_id = carrotquest.data.user.id;
+var user_id;
 
+console.log(carrotquest.data.user.id );
 setTimeout(function(){
     if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
     user_id = carrotquest.data.user.id;  // Uniq id of CQ user.
@@ -46,7 +47,7 @@ setTimeout(function() {
     /*Catch information from forms with attr simpleform fields. !*/
     function sendSimpleForm(){
     if ($(target).is('[simpleform]') && $('#'+target.id).valid()) { // if form has simpleform attribute and Validate with Jquery Validation.  
-        var text,text1,text2,text3,text4,text5,text6,checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
+    var text,text1,text2,text3,text4,text5,text6,checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
     var simpleform = $('#'+target.id) // Id of the form
     var formArray = simpleform.serializeArray(); // Massive with data from $form.
