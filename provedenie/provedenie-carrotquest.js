@@ -31,6 +31,7 @@ var hidden_name = setInterval(function(){
             $('body').append('<div id="carrotUsername" hidden>'+data.data.props.$name+'</div>')
         } 
     }) ;
+    clearInterval(hidden_name)
 }
 },500)
 user_id;
