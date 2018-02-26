@@ -13,22 +13,12 @@
 carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
 <!-- CarrotQuest END -->
 
+  var authToken = 'app.14055.46270bd4201d66c944a361bf1bae381f65d2516b149a4808'; // Token from CQ.
+var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
 
-window.evg = function(a,target){
-    if (a == undefined || a == '') { return }
-    var test_result = a; // answer from other script
-form_id = target.id;
-console.log(form_id);
-console.log(form_id);
-console.log($(target).is('[simpleform]') );
-console.log('test-result',test_result);
-var user_id;
-    var authToken = 'app.14055.46270bd4201d66c944a361bf1bae381f65d2516b149a4808'; // Token from CQ.
-    var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
-
-    setTimeout(function(){
-        if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
-    user_id = carrotquest.data.user.id;  // Uniq id of CQ user.
+setTimeout(function(){
+    if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
+    var user_id = carrotquest.data.user.id;  // Uniq id of CQ user.
     $.ajax ({
         type: 'GET',
         url: 'https://api.carrotquest.io/v1/users/'+user_id,
@@ -42,12 +32,22 @@ var user_id;
 }
 },500)
 
-    setTimeout(function() {
-        sendSimpleForm()
-    },1000)
+window.evg = function(a,target){
+    if (a == undefined || a == '') { return }
+    var test_result = a; // answer from other script
+form_id = target.id;
+console.log(form_id);
+console.log(form_id);
+console.log($(target).is('[simpleform]') );
+console.log('test-result',test_result);
+user_id = $('#carrotUsername').text();
+console.log(user_id);
+setTimeout(function() {
+    sendSimpleForm()
+},1000)
 
-    /*Catch information from forms with attr simpleform fields. !*/
-    function sendSimpleForm(){
+/*Catch information from forms with attr simpleform fields. !*/
+function sendSimpleForm(){
     if ($(target).is('[simpleform]') && $('#'+target.id).valid()) { // if form has simpleform attribute and Validate with Jquery Validation.  
         var text,text1,text2,text3,text4,text5,text6,checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
