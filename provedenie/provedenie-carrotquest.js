@@ -15,7 +15,8 @@ carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
 
 var authToken = 'app.14055.46270bd4201d66c944a361bf1bae381f65d2516b149a4808'; // Token from CQ.
 var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
-var user_id = carrotquest.data.user.id;
+var user_id;
+
 setTimeout(function(){
     if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
     var user_id = carrotquest.data.user.id;  // Uniq id of CQ user.
@@ -33,7 +34,6 @@ setTimeout(function(){
 },500)
 
 window.evg = function(a,target){
-console.log(a);
 if (a == undefined || a == '') { return }
 var test_result = a; // answer from other script
 form_id = target.id;
