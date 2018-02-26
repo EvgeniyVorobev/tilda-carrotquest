@@ -36,11 +36,8 @@ window.evg = function(a,target){
     if (a == undefined || a == '') { return }
     var test_result = a; // answer from other script
 form_id = target.id;
-console.log(form_id);
-console.log(form_id);
-console.log($(target).is('[simpleform]') );
 console.log('test-result',test_result);
-user_id = $('#carrotUsername').text();
+var user_id = carrotquest.data.user.id;
 console.log(user_id);
 setTimeout(function() {
     sendSimpleForm()
