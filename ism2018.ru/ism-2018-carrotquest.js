@@ -1,16 +1,18 @@
 <!-- CarrotQuest BEGIN -->
-(function(){
-    function Build(name, args){return function(){window.carrotquestasync.push(name, arguments);} }
-    if (typeof carrotquest === 'undefined') {
+
+    (function(){
+      function Build(name, args){return function(){window.carrotquestasync.push(name, arguments);} }
+      if (typeof carrotquest === 'undefined') {
         var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
         s.src = '//cdn.carrotquest.io/api.min.js';
         var x = document.getElementsByTagName('head')[0]; x.appendChild(s);
         window.carrotquest = {}; window.carrotquestasync = []; carrotquest.settings = {};
         var m = ['connect', 'track', 'identify', 'auth', 'open', 'onReady', 'addCallback', 'removeCallback', 'trackMessageInteraction'];
         for (var i = 0; i < m.length; i++) carrotquest[m[i]] = Build(m[i]);
-    }
-})();
-carrotquest.connect('14055-2da1eea50c87cb2ecb655ddc78');
+      }
+    })();
+  carrotquest.connect('14283-c7e7d643459a3dccf860153ca8');
+
 <!-- CarrotQuest END -->
 
 var authToken = 'app.14283.2acf6f71e5667fc5c45cbc7edf127f69de3e23fb8f6524cf'; // Token from CQ.
