@@ -24,7 +24,7 @@ console.log($(target).is('[simpleform]') );
 console.log('test-result',test_result);
 var user_id;
     var authToken = 'app.14055.46270bd4201d66c944a361bf1bae381f65d2516b149a4808'; // Token from CQ.
-    var scriptSrc = ' https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
+    var scriptSrc = 'https://hook.io/evgeniyvorobev/provedenie-carrotquest'; // Hook script src.
 
     setTimeout(function(){
         if (carrotquest.data.user.id != undefined || carrotquest.data.user.id != '') {
