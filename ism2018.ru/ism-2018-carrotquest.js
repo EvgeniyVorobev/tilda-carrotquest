@@ -46,7 +46,6 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
     }
 },500)
 
-
 /* Function for special UNIQ form with interview (test)*/
 window.evgCarrot.interviewForm = function(a,target){
 if (a == undefined || a == '') { return } // checking if function didn't get ("a" variable) -> Abort
@@ -130,7 +129,7 @@ function sendSimpleForm(){ // Catch information from form.
 // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
 
 	/* Send Data to CQ */
-		function sendToCarrot(){  
+	function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
@@ -149,6 +148,7 @@ function sendSimpleForm(){ // Catch information from form.
                 "url": decodeURI(location.href),
                 "name": name,
                 "email": email,
+                "phone": phone,
                 "Результат теста": test_result,
                 "allInfo": allInfo_str
             }
@@ -166,6 +166,7 @@ function sendSimpleForm(){ // Catch information from form.
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
+            "phone": phone,
             "allInfo": allInfo_str
              }
    		   })
@@ -220,7 +221,7 @@ $(document).ready(function(){
 	})
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( this.value != '' && this.placeholder != '') {
-         	 	allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+         	allInfo_str[this.placeholder] = ' '+this.value+' <br>';
           	allInfo[this.placeholder] = this.value;
         } else {
             allInfo_str[this.name] = ' '+this.value+' <br>';
@@ -282,6 +283,7 @@ $(document).ready(function(){
                 "url": decodeURI(location.href),
                 "name": name,
                 "email": email,
+                "phone": phone
                 "allInfo": allInfo_str
             }
         })
@@ -298,6 +300,7 @@ $(document).ready(function(){
             "url": decodeURI(location.href),
             "name": name,
             "email": email,
+            "phone": phone,
             "allInfo": allInfo_str
             }
         })
@@ -308,8 +311,10 @@ $(document).ready(function(){
     sendToCarrot();
     }
 /* ..end [Function for special UNIQ form with interview (test)]  */
-    
-    $('.js-form-proccess').each(function(){ // if press Submit , then run mySuccessFunction;
+
+
+    // if press Submit , then run mySuccessFunction;
+    $('.js-form-proccess').each(function(){
         $(this).data('success-callback', 'window.mySuccessFunction');
     });
 
