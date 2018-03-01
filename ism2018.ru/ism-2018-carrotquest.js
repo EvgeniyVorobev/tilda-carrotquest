@@ -283,7 +283,7 @@ $(document).ready(function(){
                 "url": decodeURI(location.href),
                 "name": name,
                 "email": email,
-                "phone": phone
+                "phone": phone,
                 "allInfo": allInfo_str
             }
         })
