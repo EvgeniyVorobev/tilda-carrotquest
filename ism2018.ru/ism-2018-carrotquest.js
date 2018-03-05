@@ -109,7 +109,7 @@ function sendSimpleForm(){ // Catch information from form.
     /* Filter form, and set value if it set. */
     function filterArray() {    
     if (this.name == 'formname') {
-        formname = this.value  ; // hidden form name from hidden input field.
+        formname = this.value + ' ' + test_result   ; // hidden form name from hidden input field.
     }
     if (this.name == 'name' || this.name == 'Name') { // search for name.
         name = this.value   ; 
