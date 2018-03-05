@@ -603,7 +603,6 @@ $('#carrotUsername').text(name);
 sendToCarrot();
 }
 
-
     // if press Submit , then run mySuccessFunction;
     $('.js-form-proccess').each(function(){
         $(this).data('success-callback', 'window.mySuccessFunction');
