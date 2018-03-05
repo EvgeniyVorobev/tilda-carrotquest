@@ -112,7 +112,7 @@ function sendSimpleForm(){ // Catch information from form.
         formname = this.value + ' ' + test_result   ; // hidden form name from hidden input field.
     }
     if (this.name == 'name' || this.name == 'Name') { // search for name.
-        name = this.value   ; 
+        name = this.value   ;
     } 
     if (name == '' || name == undefined) { // if name isn't set -> take username from field #carrotUsername.
         name = $('#carrotUsername').text()
