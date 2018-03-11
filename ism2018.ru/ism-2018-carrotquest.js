@@ -42,7 +42,20 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
                 $('body').append('<div id="carrotUsername" hidden>'+data.data.props.$name+'</div>')
             } 
         }) ;
-        clearInterval(hidden_name)
+       	    
+	  /* Add CQ username by HOOK.io (without auth_token !!!) ) */
+	  /*  $.ajax ({
+            type: 'POST',
+            url: 'https://hook.io/evgeniyvorobev/getname?hook_private_key=ab992945-0706-4fed-a5bb-1e70b5b5b9bb',
+            data: { 
+                'user_id': 241480408 
+            },
+            success: function(data) {
+			var username = JSON.parse(data).data.props.$name ;
+            $('body').append('<div id="carrotUsername" hidden>'+username+'</div>')
+            } 
+         }) */ 
+	    clearInterval(hidden_name)
     }
 },500)
 
