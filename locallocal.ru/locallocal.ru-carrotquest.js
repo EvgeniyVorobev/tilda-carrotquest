@@ -516,7 +516,7 @@ $(document).ready(function(){
     /* Collect information from form fields */
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
     	console.log('payments', $form.attr('payments'));
-    	console.log(this);
+    	console.log('$(this).attr("notchecked")',$(this).attr('notcheck-cq'));
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
         && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
