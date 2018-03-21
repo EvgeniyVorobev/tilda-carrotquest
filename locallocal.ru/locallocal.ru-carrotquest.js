@@ -497,7 +497,7 @@ function sendSimpleForm(){ // Catch information from form.
 /* ..end [Function for special UNIQ form with interview (test)]  */
 
 
-/* Function run after submit event execute - Tilda Form's (not payments form's). */
+/* Function run after submit event execute - simple HTML/PHP sites  */
 $(document).ready(function(){
     window.mySuccessFunction = function($form){
     console.log($form);
@@ -515,6 +515,8 @@ $(document).ready(function(){
 
     /* Collect information from form fields */
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
+    	console.log('payments', $form.attr('payments'));
+    	console.log(this);
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
         && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
@@ -526,7 +528,7 @@ $(document).ready(function(){
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
         && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
         && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
-        && this.name != "formname" && this.placeholder.length < 1) {
+        && this.name != "formname" && this.placeholder.length < 1 && $(this).attr('notcheck-cq') == undefined) {
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     } else if (this.type == 'radio' && this.checked) {
@@ -630,19 +632,17 @@ $(document).ready(function(){
     }
 /* ..end [Function for special UNIQ form with interview (test)]  */
 
-        $('form').submit(function(){
+
+    // if press Submit , then run mySuccessFunction;
+      $('form').submit(function(){
         var formId = $(this).attr('id');
         if ($(this).valid()){
             window.mySuccessFunction($(this));
             console.log('Валидно');
             console.log($(this));
             console.log(this)
-        }})
+      }})
 
-    // if press Submit , then run mySuccessFunction;
-    $('.js-form-proccess').each(function(){
-        $(this).data('success-callback', 'window.mySuccessFunction');
-    });
 
     // Scroll to form from CQ leads/dialogs.
     setTimeout(function(){
