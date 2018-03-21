@@ -125,18 +125,18 @@ function sendSimpleForm(){ // Catch information from form.
     if (this.name == 'phone' || this.name == 'Phone') { // search for phone
         phone = this.value    ; 
     } 
-	}
-	/* ..end [Filter form, and set value if it set.] */
+    }
+    /* ..end [Filter form, and set value if it set.] */
 
 // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
 
-	/* Send Data to CQ */
-	function sendToCarrot(){  
+    /* Send Data to CQ */
+    function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
-		}
+        }
 
     if (formname != undefined) { // if form got name="formname" .
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ leads.
@@ -171,12 +171,12 @@ function sendSimpleForm(){ // Catch information from form.
             "phone": phone,
             "allInfo": allInfo_str
              }
-   		   })
-		}
-	$('#carrotUsername').text(name);
-	}
+           })
+        }
+    $('#carrotUsername').text(name);
+    }
     /* ..end [Send Data to CQ] */
-	sendToCarrot(); 
+    sendToCarrot(); 
 
 }}}
 /* ..end [Function for special UNIQ form with interview (test)]  */
@@ -197,7 +197,7 @@ $(document).ready(function(){
     var optionInformation = $($form).find('option');
     var checkboxInformation = $($form).find("input[type='checkbox']");
 
-	/* Collect information from form fields */
+    /* Collect information from form fields */
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
@@ -220,11 +220,11 @@ $(document).ready(function(){
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     }
-	})
+    })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( this.value != '' && this.placeholder != '') {
-         	allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-          	allInfo[this.placeholder] = this.value;
+            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+            allInfo[this.placeholder] = this.value;
         } else {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
@@ -335,8 +335,11 @@ $(document).ready(function(){
     },2000)
 });
 
-} else {
+} 
 
+/* ~~~~~~~~ IF SITE NOT USE TILDA  ~~~~~~~~*/
+else {  
+    
 window.evgCarrot = {}; // Global Object for scripts
 var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
     user_id = carrotquest.data.user.id ; 
@@ -437,18 +440,18 @@ function sendSimpleForm(){ // Catch information from form.
     if (this.name == 'phone' || this.name == 'Phone') { // search for phone
         phone = this.value    ; 
     } 
-	}
-	/* ..end [Filter form, and set value if it set.] */
+    }
+    /* ..end [Filter form, and set value if it set.] */
 
 // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
 
-	/* Send Data to CQ */
-	function sendToCarrot(){  
+    /* Send Data to CQ */
+    function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
-		}
+        }
 
     if (formname != undefined) { // if form got name="formname" .
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ leads.
@@ -483,12 +486,12 @@ function sendSimpleForm(){ // Catch information from form.
             "phone": phone,
             "allInfo": allInfo_str
              }
-   		   })
-		}
-	$('#carrotUsername').text(name);
-	}
+           })
+        }
+    $('#carrotUsername').text(name);
+    }
     /* ..end [Send Data to CQ] */
-	sendToCarrot(); 
+    sendToCarrot(); 
 
 }}}
 /* ..end [Function for special UNIQ form with interview (test)]  */
@@ -497,6 +500,7 @@ function sendSimpleForm(){ // Catch information from form.
 /* Function run after submit event execute - Tilda Form's (not payments form's). */
 $(document).ready(function(){
     window.mySuccessFunction = function($form){
+    console.log($form);
     var text,text1,text2,text3,text4,text5,text6,
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
@@ -509,7 +513,7 @@ $(document).ready(function(){
     var optionInformation = $($form).find('option');
     var checkboxInformation = $($form).find("input[type='checkbox']");
 
-	/* Collect information from form fields */
+    /* Collect information from form fields */
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
@@ -532,11 +536,11 @@ $(document).ready(function(){
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     }
-	})
+    })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( this.value != '' && this.placeholder != '') {
-         	allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-          	allInfo[this.placeholder] = this.value;
+            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+            allInfo[this.placeholder] = this.value;
         } else {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
@@ -626,6 +630,14 @@ $(document).ready(function(){
     }
 /* ..end [Function for special UNIQ form with interview (test)]  */
 
+        $('form').submit(function(){
+        var formId = $(this).attr('id');
+        if ($(this).valid()){
+            window.mySuccessFunction($(this));
+            console.log('Валидно');
+            console.log($(this));
+            console.log(this)
+        }})
 
     // if press Submit , then run mySuccessFunction;
     $('.js-form-proccess').each(function(){
