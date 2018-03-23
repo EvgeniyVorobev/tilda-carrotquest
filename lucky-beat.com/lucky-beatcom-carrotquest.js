@@ -215,7 +215,7 @@ $(document).ready(function(){
         allInfo_str[this.placeholder] = ' '+this.value+' <br>';
         allInfo[this.placeholder] = this.value;
     } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
-        console.log('ЭТО МЫ И ИЩЕМ , this.value');
+        console.log('ЭТО МЫ И ИЩЕМ', this.value);
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     }
