@@ -342,14 +342,14 @@ else {
     
 window.evgCarrot = {}; // Global Object for scripts
 var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
-	if (carrotquest) {
+	if (carrotquest && carrotquest.data) {
     user_id = carrotquest.data.user.id ; 
     user_id.length > 4 ? clearInterval(user_id) : '';
   }
 },1000) ;
 
 var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername (for update CQ username if not set in Form form[name="name"]. )
-    if (carrotquest) {
+    if (carrotquest && carrotquest.data) {
         user_id = carrotquest.data.user.id;  
         $.ajax ({
             type: 'GET',
