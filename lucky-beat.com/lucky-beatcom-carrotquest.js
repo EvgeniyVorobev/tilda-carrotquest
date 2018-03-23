@@ -123,18 +123,18 @@ function sendSimpleForm(){ // Catch information from form.
     if (this.name == 'phone' || this.name == 'Phone') { // search for phone
         phone = this.value    ; 
     } 
-	}
-	/* ..end [Filter form, and set value if it set.] */
+    }
+    /* ..end [Filter form, and set value if it set.] */
 
 // ____----___---___---____-----___----___----- ____-----___-----___-----___-----___----//
 
-	/* Send Data to CQ */
-	function sendToCarrot(){  
+    /* Send Data to CQ */
+    function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
-		}
+        }
 
     if (formname != undefined) { // if form got name="formname" .
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ leads.
@@ -169,12 +169,12 @@ function sendSimpleForm(){ // Catch information from form.
             "phone": phone,
             "allInfo": allInfo_str
              }
-   		   })
-		}
-	$('#carrotUsername').text(name);
-	}
+           })
+        }
+    $('#carrotUsername').text(name);
+    }
     /* ..end [Send Data to CQ] */
-	sendToCarrot(); 
+    sendToCarrot(); 
 
 }}}
 /* ..end [Function for special UNIQ form with interview (test)]  */
@@ -195,10 +195,10 @@ $(document).ready(function(){
     var optionInformation = $($form).find('option');
     var checkboxInformation = $($form).find("input[type='checkbox']");
 
-	/* Collect information from form fields */
+    /* Collect information from form fields */
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
-        && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
+        && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' && this.name != "tildaspec-formname"
         && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
         && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
         && this.name != "formname" && this.placeholder != '') {
@@ -208,21 +208,22 @@ $(document).ready(function(){
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
         && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
         && this.value != '' && this.name != '' && this.type != 'radio' && this.type != 'Checkbox' && this.type != 'checkbox' 
-        && this.name != "formname" && this.placeholder.length < 1) {
+        && this.name != "formname" && this.name != "tildaspec-formname" && this.placeholder.length < 1) {
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     } else if (this.type == 'radio' && this.checked) {
         allInfo_str[this.placeholder] = ' '+this.value+' <br>';
         allInfo[this.placeholder] = this.value;
     } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
+        console.log('ЭТО МЫ И ИЩЕМ , this.value');
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     }
-	})
+    })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( this.value != '' && this.placeholder != '') {
-         	allInfo_str[this.placeholder] = ' '+this.value+' <br>';
-          	allInfo[this.placeholder] = this.value;
+            allInfo_str[this.placeholder] = ' '+this.value+' <br>';
+            allInfo[this.placeholder] = this.value;
         } else {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
@@ -239,7 +240,7 @@ $(document).ready(function(){
     $.each(formArray, filterArray); // Filtering the massive formArray.
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
 
-    // console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
+    console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
 
     /* Filter form, and set value if it set. */
     function filterArray() {    
