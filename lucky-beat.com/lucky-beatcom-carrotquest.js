@@ -258,6 +258,18 @@ $(document).ready(function(){
     if (this.name == 'phone' || this.name == 'Phone') { // search for phone
         phone = this.value    ; 
     } 
+    if (this.name == 'Age Of Child_1') { // search for age form
+        age1 = this.value    ; 
+    } 
+    if (this.name == 'Age Of Child_2') { // search for age form
+        age2 = this.value    ; 
+    } 
+    if (this.name == 'Age Of Child_3') { // search for age form
+        age3 = this.value    ; 
+    } 
+    if (this.name == 'Age Of Child_4') { // search for age form
+        age4 = this.value    ; 
+    } 
   }
     /* ..end [Filter form, and set value if it set.] */
     
@@ -271,7 +283,7 @@ $(document).ready(function(){
         });
     }
 
-    if (formname != undefined) { // if $form got name="formname" 
+    if (formname != undefined && formname != 'Footer') { // if $form got name="formname" && != 'Footer';
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
         $.ajax({ // send to hook.io -> CQ dialogs
             type: 'POST',
@@ -282,6 +294,28 @@ $(document).ready(function(){
                 "form_url": decodeURI(location.href+'#'+formname),
                 "url": decodeURI(location.href),
                 "name": name,
+                "email": email,
+                "phone": phone,
+                "allInfo": allInfo_str
+            }
+        })
+    }
+
+     if (formname != undefined && formname == 'Footer') { // if $form got name="formname" && formname == 'Footer';
+        carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
+        $.ajax({ // send to hook.io -> CQ dialogs
+            type: 'POST',
+            url: scriptSrc,
+            data: { 
+                "user_id": user_id,
+                "form_name": formname,
+                "form_url": decodeURI(location.href+'#'+formname),
+                "url": decodeURI(location.href),
+                "name": name,
+                "age1": Age Of Child_1,
+                "age2": Age Of Child_2,
+                "age3": Age Of Child_3,
+                "age4": Age Of Child_4,
                 "email": email,
                 "phone": phone,
                 "allInfo": allInfo_str
