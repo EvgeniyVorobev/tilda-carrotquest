@@ -214,8 +214,7 @@ $(document).ready(function(){
     } else if (this.type == 'radio' && this.checked) {
         allInfo_str[this.placeholder] = ' '+this.value+' <br>';
         allInfo[this.placeholder] = this.value;
-    } else if (this.type == 'checkbox' || this.type == 'Checkbox' && this.checked) {
-        console.log('ЭТО МЫ И ИЩЕМ', this.value);
+    } else if (this.type == 'checkbox' && this.name != '' || this.type == 'Checkbox' && this.checked && this.name != '') {
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
     }
