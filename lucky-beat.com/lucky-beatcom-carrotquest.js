@@ -46,7 +46,7 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
     }
 },500)
 
-/* Function for special UNIQ form with interview (test)*/
+/* Function for special UNIQ form with interview (test) !!!!!!!!!!!!*/
 window.evgCarrot.interviewForm = function(a,target){
 if (a == undefined || a == '') { return } // checking if function didn't get ("a" variable) -> Abort
 var test_result = a; // set test_result from get ("a" variable)
@@ -185,7 +185,7 @@ $(document).ready(function(){
     window.mySuccessFunction = function($form){
     var text,text1,text2,text3,text4,text5,text6,
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
-    formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
+    formname,name,familyname,email,phone,year,formName,price,age1,age2,age3,age4; // Identify variables for transfering too Hook e.t.c
     var formArray = $form.serializeArray(); // Massive with data from $form.
     var allInfo = {};  // Object with all info for transfering. 
     var allInfo_str = {} // String with all info for transfering.
@@ -269,7 +269,7 @@ $(document).ready(function(){
     } 
     if (this.name == 'Age Of Child_4') { // search for age form
         age4 = this.value    ; 
-        console.log('ЭТО age4 и он равен', '');
+        console.log('ЭТО age4 и он равен', age4);
     } 
   }
     /* ..end [Filter form, and set value if it set.] */
