@@ -46,16 +46,6 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
     }
 },500)
 
-/* Function for special UNIQ form with interview (test) !!!!!!!!!!!!*/
-window.evgCarrot.interviewForm = function(a,target){
-if (a == undefined || a == '') { return } // checking if function didn't get ("a" variable) -> Abort
-var test_result = a; // set test_result from get ("a" variable)
-var form_id = target.id; // set form_id from get ("target" variable)
-
-setTimeout(function() { // Wait 1 sek and execude sendSimpleForm()
-    sendSimpleForm()
-},1000)
-
 /* Function run after submit event execute - Tilda Form's (not payments form's). !!! */
 $(document).ready(function(){
     window.mySuccessFunction = function($form){
