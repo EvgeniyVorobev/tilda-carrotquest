@@ -222,6 +222,7 @@ $(document).ready(function(){
     } else if (this.type == 'radio' && this.checked) { 
         allInfo_str[this.placeholder] = ' '+this.value+' <br>';
         allInfo[this.placeholder] = this.value;
+        allInfo[this.name] = this.value;
     } else if (this.type == 'checkbox' && this.name != '' || this.type == 'Checkbox' && this.checked && this.name != '') {
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
@@ -277,7 +278,7 @@ $(document).ready(function(){
     } 
     if (this.name == 'Age Of Child_4') { // search for age form
         age4 = this.value    ; 
-        console.log('ЭТО age4 и он равен', );
+        console.log('ЭТО age4 и он равен = ', age4);
     } 
   }
     /* ..end [Filter form, and set value if it set.] */
