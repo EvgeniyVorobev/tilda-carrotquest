@@ -59,7 +59,7 @@ setTimeout(function() { // Wait 1 sek and execude sendSimpleForm()
 function sendSimpleForm(){ // Catch information from form.
     if ($(target).is('[simpleform]') && $('#'+target.id).valid()) { // if form has simpleform attribute and Validate with Jquery Validation.  
     var text,text1,text2,text3,text4,text5,text6,checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
-    formname,name,familyname,email,phone,year,formName,price; // identify variables for transfering too Hook e.t.c
+    formname,name,familyname,email,phone,year,formName,price,age1,age2,age3,age4; // identify variables for transfering too Hook e.t.c
     var simpleform = $('#'+target.id) // id of the form
     var formArray = simpleform.serializeArray(); // massive with data from $form.
     var allInfo = {};  // object with all info for transfering. 
@@ -283,25 +283,25 @@ $(document).ready(function(){
         });
     }
 
-//     if (formname != undefined && formname != 'Footer') { // if $form got name="formname" && != 'Footer';
-//         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
-//         $.ajax({ // send to hook.io -> CQ dialogs
-//             type: 'POST',
-//             url: scriptSrc,
-//             data: { 
-//                 "user_id": user_id,
-//                 "form_name": formname,
-//                 "form_url": decodeURI(location.href+'#'+formname),
-//                 "url": decodeURI(location.href),
-//                 "name": name,
-//                 "email": email,
-//                 "phone": phone,
-//                 "allInfo": allInfo_str
-//             }
-//         })
-//     }
+    if (formname != undefined && formname != 'Footer') { // if $form got name="formname" && != 'Footer';
+        carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
+        $.ajax({ // send to hook.io -> CQ dialogs
+            type: 'POST',
+            url: scriptSrc,
+            data: { 
+                "user_id": user_id,
+                "form_name": formname,
+                "form_url": decodeURI(location.href+'#'+formname),
+                "url": decodeURI(location.href),
+                "name": name,
+                "email": email,
+                "phone": phone,
+                "allInfo": allInfo_str
+            }
+        })
+    }
 
-     if (formname != undefined) { // if $form got name="formname" && formname == 'Footer';
+     if (formname != undefined && formname == 'Footer') { // if $form got name="formname" && formname == 'Footer';
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
         $.ajax({ // send to hook.io -> CQ dialogs
             type: 'POST',
