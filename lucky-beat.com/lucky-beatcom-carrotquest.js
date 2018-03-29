@@ -211,7 +211,7 @@ $(document).ready(function(){
         && this.name != "formname" && this.name != "tildaspec-formname" && this.placeholder.length < 1) {
         allInfo_str[this.name] = ' '+this.value+' <br>';
         allInfo[this.name] = this.value;
-    } else if (this.type == 'radio' && this.checked) {
+    } else if (this.type == 'radio' && this.checked) { 
         allInfo_str[this.placeholder] = ' '+this.value+' <br>';
         allInfo[this.placeholder] = this.value;
     } else if (this.type == 'checkbox' && this.name != '' || this.type == 'Checkbox' && this.checked && this.name != '') {
@@ -269,6 +269,7 @@ $(document).ready(function(){
     } 
     if (this.name == 'Age Of Child_4') { // search for age form
         age4 = this.value    ; 
+        console.log('ЭТО age4 и он равен', '');
     } 
   }
     /* ..end [Filter form, and set value if it set.] */
