@@ -342,7 +342,7 @@ else {
     
 window.evgCarrot = {}; // Global Object for scripts
 var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
-	if (carrotquest && carrotquest.data) {
+    if (carrotquest && carrotquest.data) {
     user_id = carrotquest.data.user.id ; 
     user_id.length > 4 ? clearInterval(user_id) : '';
   }
@@ -517,8 +517,8 @@ $(document).ready(function(){
 
     /* Collect information from form fields */
     inputInformation.each(function () {  // Write input data from $form, that meet requirements.
-    	console.log('payments', $form.attr('payments'));
-    	console.log('$(this).attr("notchecked")',$(this).attr('notcheck-cq'));
+        console.log('payments', $form.attr('payments'));
+        console.log('$(this).attr("notchecked")',$(this).attr('notcheck-cq'));
         if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]' 
         && this.name != 'tildaspec-version-lib' && this.name != 'tildaspec-formskey' && this.name != 'tildaspec-formid' 
         && this.name != 'tildaspec-referer' && this.name != 'tildaspec-cookie' && this.name != 'form-spec-comments'  && this.name != 'tildaspec-tildacaptcha' 
@@ -542,6 +542,10 @@ $(document).ready(function(){
     }
     })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
+        if ( $(this).attr('cq-text') != '' ) {
+            allInfo_str[this.name] == ' '+this.value+' <br>';
+            allInfo[this.name] = this.value;
+        }
         if ( this.value != '' && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
@@ -561,7 +565,7 @@ $(document).ready(function(){
     $.each(formArray, filterArray); // Filtering the massive formArray.
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
 
-console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
+    // console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
 
     /* Filter form, and set value if it set. */
     function filterArray() {    
