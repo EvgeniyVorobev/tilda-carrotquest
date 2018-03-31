@@ -543,8 +543,8 @@ $(document).ready(function(){
     })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( $(this).attr('cq-text') != '' ) {
-            allInfo_str[$(this).attr('cq-text')] == ' '+this.value+' <br>';
-            allInfo[$(this).attr('cq-text')] = this.value;
+            allInfo_str[this.getAttribute('cq-text')] == ' '+this.value+' <br>';
+            allInfo[this.getAttribute('cq-text')] = this.value;
             return;
         }
         if ( this.value != '' && this.placeholder != '') {
