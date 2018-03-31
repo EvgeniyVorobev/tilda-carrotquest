@@ -543,7 +543,7 @@ $(document).ready(function(){
     })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( this.getAttribute('cq-text') ) {
-            allInfo_str[this.getAttribute('cq-text')] == ' '+this.value+' <br>';
+            allInfo_str[this.getAttribute('cq-text')] = ' '+this.value+' <br>';
             allInfo[this.getAttribute('cq-text')] = this.value;
         }
         else if ( this.value != '' && this.placeholder != '' && this.getAttribute('cq-text') == null ) {
@@ -567,7 +567,7 @@ $(document).ready(function(){
     $.each(formArray, filterArray); // Filtering the massive formArray.
     console.log('allInfo_str' , allInfo_str);
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
-    console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
+    // console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
 
     /* Filter form, and set value if it set. */
     function filterArray() {    
