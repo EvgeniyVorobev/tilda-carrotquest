@@ -567,7 +567,7 @@ $(document).ready(function(){
     $.each(formArray, filterArray); // Filtering the massive formArray.
     console.log('allInfo_str' , allInfo_str);
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
-    // console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
+    console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
 
     /* Filter form, and set value if it set. */
     function filterArray() {    
