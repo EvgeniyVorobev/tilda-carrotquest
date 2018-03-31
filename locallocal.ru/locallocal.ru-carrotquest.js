@@ -545,7 +545,6 @@ $(document).ready(function(){
         if ( $(this).attr('cq-text') != '' ) {
             allInfo_str[$(this).attr('cq-text')] == ' '+this.value+' <br>';
             allInfo[$(this).attr('cq-text')] = this.value;
-            return;
         }
         if ( this.value != '' && this.placeholder != '') {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
