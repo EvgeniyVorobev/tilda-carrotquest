@@ -542,9 +542,13 @@ $(document).ready(function(){
     }
     })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
-        if ( this.getAttribute('cq-text') != '' ) {
+        if ( this.getAttribute('cq-text') ) {
+            // console.log('this.getAttribute CQ-TEXT', this.getAttribute('cq-text'));
+            // console.log('this.getAttribute CQ-TEXT THIS.VALUE', this.value);
             allInfo_str[this.getAttribute('cq-text')] == ' '+this.value+' <br>';
             allInfo[this.getAttribute('cq-text')] = this.value;
+            console.log(allInfo_str[this.getAttribute('cq-text')]);
+            console.log(this.getAttribute('cq-text'),' ЭТО ТЕКСТ ОТВЕТА');
         }
         if ( this.value != '' && this.placeholder != '' && this.getAttribute('cq-text') == null ) {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
@@ -554,6 +558,7 @@ $(document).ready(function(){
             allInfo[this.name] = this.value;
         }
     })
+
     selectInformation.each(function () { // write select data from $form, that meet requirements.
         if ( this.value != '' && this.name != undefined && this.name != '') {
             allInfo_str[this.name] = ' '+this.value+' <br>';
