@@ -543,17 +543,14 @@ $(document).ready(function(){
     })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
         if ( this.getAttribute('cq-text') ) {
-            // console.log('this.getAttribute CQ-TEXT', this.getAttribute('cq-text'));
-            // console.log('this.getAttribute CQ-TEXT THIS.VALUE', this.value);
             allInfo_str[this.getAttribute('cq-text')] == ' '+this.value+' <br>';
             allInfo[this.getAttribute('cq-text')] = this.value;
-            console.log(allInfo_str[this.getAttribute('cq-text')]);
-            console.log(this.getAttribute('cq-text'),' ЭТО ТЕКСТ ОТВЕТА');
         }
-        if ( this.value != '' && this.placeholder != '' && this.getAttribute('cq-text') == null ) {
+        else if ( this.value != '' && this.placeholder != '' && this.getAttribute('cq-text') == null ) {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
-        } else {
+        } 
+        else if ( this.placeholder == '' && this.getAttribute('cq-text') == null && this.name != '' ) {
             allInfo_str[this.name] = ' '+this.value+' <br>';
             allInfo[this.name] = this.value;
         }
@@ -568,8 +565,8 @@ $(document).ready(function(){
     /* ..end [Collect information from form fields ] */
 
     $.each(formArray, filterArray); // Filtering the massive formArray.
+    console.log('allInfo_str' , allInfo_str);
     var allInfo_str = JSON.stringify(allInfo_str).replace('{','').replace('}','').replace(/"/g,"").replace(/\<br>,/g,'<br>'); // stringify JSON object for CQ dialogs.
-
     console.log(JSON.stringify(allInfo_str)); console.log('allInfo_str ',allInfo_str); console.log('allInfo ',allInfo)
 
     /* Filter form, and set value if it set. */
