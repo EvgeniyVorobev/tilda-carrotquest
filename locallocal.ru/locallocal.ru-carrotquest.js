@@ -542,12 +542,11 @@ $(document).ready(function(){
     }
     })
     textareaInformation.each(function () { // write textarea data from $form, that meet requirements.
-        if ( $(this).attr('cq-text') != '' ) {
+        if ( this.getAttribute('cq-text') != '' ) {
             allInfo_str[this.getAttribute('cq-text')] == ' '+this.value+' <br>';
             allInfo[this.getAttribute('cq-text')] = this.value;
-            return;
         }
-        if ( this.value != '' && this.placeholder != '') {
+        if ( this.value != '' && this.placeholder != '' && this.getAttribute('cq-text') == null ) {
             allInfo_str[this.placeholder] = ' '+this.value+' <br>';
             allInfo[this.placeholder] = this.value;
         } else {
