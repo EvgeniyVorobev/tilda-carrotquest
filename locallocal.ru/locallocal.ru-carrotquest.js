@@ -455,7 +455,7 @@ function sendSimpleForm(){ // Catch information from form.
         });
         }
 
-    if (formname != undefined && formname != 'nosend') { // if form got name="formname" .
+    if (formname != undefined) { // if form got name="formname" .
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ leads.
         $.ajax({ // send to hook.io -> CQ dialogs.
             type: 'POST',
@@ -599,7 +599,7 @@ $(document).ready(function(){
         });
     }
 
-    if (formname != undefined) { // if $form got name="formname" 
+    if (formname != undefined && formname != 'nosend') { // if $form got name="formname" 
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
         $.ajax({ // send to hook.io -> CQ dialogs
             type: 'POST',
