@@ -317,7 +317,7 @@ $(document).ready(function(){
 
     // if press Submit , then run mySuccessFunction;
     $('.js-form-proccess').each(function(){
-        $(this).data('success-callback', 'window.mySuccessFunction');
+        // $(this).data('success-callback', 'window.mySuccessFunction');
         $(this).data('success-callback', 'window.carrotSuccesFunction');
     });
 
@@ -669,3 +669,10 @@ $(document).ready(function(){
 });
 
 }
+
+// var redirectURL = 'www.ukr.net';
+// var e_redirect = document.createElement('div');
+// e_redirect.setAttribute('id','aa');
+// e_redirect.setAttribute('onclick',`window.open('${redirectURL}')`);
+// e_redirect.click();
+// // document.getElementsByTagName('body')[0].appendChild(e_redirect);
