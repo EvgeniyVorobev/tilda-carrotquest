@@ -311,7 +311,7 @@ $(document).ready(function(){
     sendToCarrot();
     // If tilda-form has data-sucess-url (REDIRECT URI)
     setTimeout(function(){
-        if ($($form).data().successUrl != '') {
+        if ($($form).data().successUrl != '' && $($form).data().successUrl) {
             window.location.href = $($form).data().successUrl;
         }
     },1500)
