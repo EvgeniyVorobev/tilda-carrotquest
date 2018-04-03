@@ -185,7 +185,7 @@ sendToCarrot();
 /* Function run after submit event execute - Tilda Form's (not payments form's). */
 $(document).ready(function(){
     window.mySuccessFunction = function($form){
-        
+
         var text,text1,text2,text3,text4,text5,text6,
         checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
@@ -319,7 +319,7 @@ sendToCarrot();
         if ($($form).data().successUrl != '') {
             window.location.href = $($form).data().successUrl;
         }
-    },3000)
+    },1500)
 }
 /* ..end [Function for special UNIQ form with interview (test)]  */
 
@@ -349,7 +349,7 @@ sendToCarrot();
 
 /* ~~~~~~~~ IF SITE NOT USE TILDA  ~~~~~~~~*/
 else {  
-    
+
 window.evgCarrot = {}; // Global Object for scripts
 var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
     if (carrotquest && carrotquest.data) {
