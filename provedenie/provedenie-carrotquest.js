@@ -309,6 +309,12 @@ $(document).ready(function(){
     }
      /* ..end [Send Data to CQ] */
     sendToCarrot();
+    // If tilda-form has data-sucess-url (REDIRECT URI)
+    setTimeout(function(){
+        if ($($form).data().successUrl != '') {
+            window.location.href = $($form).data().successUrl;
+        }
+    },1500)
     }
 /* ..end [Function for special UNIQ form with interview (test)]  */
 
