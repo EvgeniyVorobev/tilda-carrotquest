@@ -184,7 +184,7 @@ function sendSimpleForm(){ // Catch information from form.
 
 /* Function run after submit event execute - Tilda Form's (not payments form's). */
 $(document).ready(function(){
-    window.mySuccessFunction = function($form){
+    window.carrotSuccesFunction = function($form){
     var text,text1,text2,text3,text4,text5,text6,
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
@@ -318,6 +318,7 @@ $(document).ready(function(){
     // if press Submit , then run mySuccessFunction;
     $('.js-form-proccess').each(function(){
         $(this).data('success-callback', 'window.mySuccessFunction');
+        $(this).data('success-callback', 'window.carrotSuccesFunction');
     });
 
     // Scroll to form from CQ leads/dialogs.
