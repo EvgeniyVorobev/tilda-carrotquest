@@ -183,6 +183,12 @@ console.log(Date());
 $('#carrotUsername').text(name);
 }
 sendToCarrot();
+   // If tilda-form has data-sucess-url (REDIRECT URI)
+    setTimeout(function(){
+        if ($($form).data().successUrl != '') {
+            window.location.href = $($form).data().successUrl;
+        }
+    },1500)
 }
 
     // Если нажали на Submit выполняется mySuccessFunction()
