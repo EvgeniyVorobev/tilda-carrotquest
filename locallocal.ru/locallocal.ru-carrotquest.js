@@ -315,7 +315,10 @@ $(document).ready(function(){
 
     // If tilda-form has data-sucess-url (REDIRECT URI)
     console.log('$form',$form);
-    
+    if ($($form).data().successUrl != '') {
+        window.location.href = $($form).data().successUrl;
+    }
+
     }
 /* ..end [Function for special UNIQ form with interview (test)]  */
 
@@ -674,10 +677,3 @@ $(document).ready(function(){
 });
 
 }
-
-// var redirectURL = 'www.ukr.net';
-// var e_redirect = document.createElement('div');
-// e_redirect.setAttribute('id','aa');
-// e_redirect.setAttribute('onclick',`window.open('${redirectURL}')`);
-// e_redirect.click();
-// // document.getElementsByTagName('body')[0].appendChild(e_redirect);
