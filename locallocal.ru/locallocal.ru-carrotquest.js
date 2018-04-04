@@ -336,14 +336,12 @@ $(this).data('success-callback', 'window.mySuccessFunction');
                     <div class="t-input-block"> 
                     <input id="userId" type="text" name="Phone" class="t-input js-tilda-rule " value="" data-tilda-req="0" data-tilda-rule="phone" style="color:#000000; border:1px solid #000000; "> 
                     </div> </div>`);
-                var user_id = window.carrotquest.data.user.id;
                 $('#userId').val(user_id);
                 console.log($(this).children("input[data-tilda-rule='phone']"));
                     $(this).find("input[data-tilda-rule='phone']").not('#userId').keyup(function(e){
                     var phoneFieldVal = this.value;
                     var phonePlusId = phoneFieldVal+'-----'+user_id;
                     $('#userId').val(phonePlusId);
-
                  console.log($('#userId').val());
                  console.log( /\w+$/.exec($('#userId').val())[0]); // регулярка для вытаскивания userId.
                  console.log($('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
@@ -363,12 +361,12 @@ $(this).data('success-callback', 'window.mySuccessFunction');
                     var phoneFieldVal = this.value;
                     var phonePlusId = phoneFieldVal+'-----'+user_id;
                     $('#userId').val(phonePlusId);
-                 console.log('это id', $('#userId').val());
-                 console.log('это phonenumber+id', /\w+$/.exec($('#userId').val())[0]); // регулярка для вытаскивания userId.
-                 console.log($('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
+                 console.log('это id', user_id);
+                 console.log('это phonenumber+id', /\w+$/.exec(user_id)[0]); // регулярка для вытаскивания userId.
+                 console.log($('#userId').val().replace('-----'+/\w+$/.exec(user_id)[0],'')); // регулярка чтоб номер вытащить.
                     });         
         }
-        
+
 });
 
 
