@@ -581,7 +581,7 @@ $(document).ready(function(){
 
     /* Filter form, and set value if it set. */
     function filterArray() {    
-        if (this.name == 'formname') {
+    if (this.name == 'formname') {
         formname = this.value   ; // hidden form name from hidden input field.
     }
     if (this.name == 'name' || this.name == 'Name') { // search for name.
@@ -603,7 +603,7 @@ $(document).ready(function(){
 
 /* Send Data to CQ */
 function sendToCarrot(){  
-    if ( name != undefined || name != '') { // Update CQ user's name.
+    if ( name != undefined || name != '' && formname != 'nosend') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
