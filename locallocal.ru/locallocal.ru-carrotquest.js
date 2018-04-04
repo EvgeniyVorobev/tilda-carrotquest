@@ -327,7 +327,51 @@ sendToCarrot();
     // if press Submit , then run mySuccessFunction;
     $('.js-form-proccess').each(function(){
         $(this).data('success-callback', 'window.mySuccessFunction');
-        // $(this).data('success-callback', 'window.carrotSuccesFunction');
+
+        // Added input field with CQ user Id to $form with cloudpayments identifier.
+        if  (this.closest("div [data-payment-system='cloudpayments']")) {               
+                $(this).append(`<div class="t-input-group t-input-group_ph" hidden data-input-lid="1518612561100"> 
+                    <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no" field="li_title__1496239478607" style="">Your Phone</div> 
+                    <div class="t-input-block"> 
+                    <input id="userId" type="text" name="Phone" class="t-input js-tilda-rule " value="" data-tilda-req="0" data-tilda-rule="phone" style="color:#000000; border:1px solid #000000; "> 
+                    </div> </div>`);
+                var user_id = window.carrotquest.data.user.id;
+                $('#userId').val(user_id);
+                console.log($(this).children("input[data-tilda-rule='phone']"));
+                    $(this).find("input[data-tilda-rule='phone']").not('#userId').keyup(function(e){
+                    var phoneFieldVal = this.value;
+                    var phonePlusId = phoneFieldVal+'-----'+user_id;
+                    $('#userId').val(phonePlusId);
+
+                 console.log($('#userId').val());
+                 console.log( /\w+$/.exec($('#userId').val())[0]); // регулярка для вытаскивания userId.
+                 console.log($('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
+                    });         
+        }
+
+        // Added input field with CQ user Id to $form with Yandex identifier.
+        if  (this.closest("div [data-payment-system='yakassa']")) {               
+                $(this).append(`<div class="t-input-group t-input-group_ph" hidden data-input-lid="1518612561100"> 
+                    <div class="t-input-title t-descr t-descr_md" data-redactor-toolbar="no" field="li_title__1496239478607" style="">Your Phone</div> 
+                    <div class="t-input-block"> 
+                    <input id="userId" type="text" name="Phone" class="t-input js-tilda-rule " value="" data-tilda-req="0" data-tilda-rule="phone" style="color:#000000; border:1px solid #000000; "> 
+                    </div> </div>`);
+                var user_id = window.carrotquest.data.user.id;
+                $('#userId').val(user_id);
+                console.log($(this).children("input[data-tilda-rule='phone']"));
+                    $(this).find("input[data-tilda-rule='phone']").not('#userId').keyup(function(e){
+                    var phoneFieldVal = this.value;
+                    var phonePlusId = phoneFieldVal+'-----'+user_id;
+                    $('#userId').val(phonePlusId);
+
+                 console.log('merged user + number',$('#userId').val());
+                 console.log('cq user id', /\w+$/.exec($('#userId').val())[0]); // регулярка для вытаскивания userId.
+                 console.log('это номер',$('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
+                    });         
+        }
+    });
+
+
     });
 
     // Scroll to form from CQ leads/dialogs.
@@ -344,6 +388,9 @@ sendToCarrot();
         $.each($('input'),searchForm);
     },2000)
 });
+
+
+
 
 } 
 
