@@ -603,7 +603,7 @@ $(document).ready(function(){
 
 /* Send Data to CQ */
 function sendToCarrot(){  
-    if ( name != undefined || name != '' && formname != 'nosend') { // Update CQ user's name.
+    if ( (name != undefined || name != '') && formname != 'nosend') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
