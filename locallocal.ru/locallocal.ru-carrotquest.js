@@ -325,10 +325,10 @@ sendToCarrot();
 
 
     // if press Submit , then run mySuccessFunction;
-    $('.js-form-proccess').each(function(){
-        $(this).data('success-callback', 'window.mySuccessFunction');
+$('.js-form-proccess').each(function(){
+$(this).data('success-callback', 'window.mySuccessFunction');
 
-var repeatId = setInterval(function() {
+var repeatId = setTimeout(function() {
 if (carrotquest.data.user.id ) {
 
         // Added input field with CQ user Id to $form with cloudpayments identifier.
@@ -374,9 +374,9 @@ if (carrotquest.data.user.id ) {
         }
         clearInterval(repeatId);
     } 
-},1500)
+},2500)
 
-    });
+});
 
     // Scroll to form from CQ leads/dialogs.
     setTimeout(function(){
