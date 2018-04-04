@@ -364,12 +364,12 @@ sendToCarrot();
                     var phonePlusId = phoneFieldVal+'-----'+user_id;
                     $('#userId').val(phonePlusId);
 
-                 console.log('merged user + number',$('#userId').val());
-                 console.log('cq user id', /\w+$/.exec($('#userId').val())[0]); // регулярка для вытаскивания userId.
-                 console.log('это номер',$('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
+                 console.log('это id'.$('#userId').val());
+                 console.log('это phonenumber+id' /\w+$/.exec($('#userId').val())[0]); // регулярка для вытаскивания userId.
+                 console.log($('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
                     });         
         }
-    });
+
 
 
     });
