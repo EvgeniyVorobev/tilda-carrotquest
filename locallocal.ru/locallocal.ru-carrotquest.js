@@ -327,8 +327,6 @@ sendToCarrot();
     // if press Submit , then run mySuccessFunction;
 $('.js-form-proccess').each(function(){
 $(this).data('success-callback', 'window.mySuccessFunction');
-});
-
 
 
         // Added input field with CQ user Id to $form with cloudpayments identifier.
@@ -370,6 +368,11 @@ $(this).data('success-callback', 'window.mySuccessFunction');
                  console.log($('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
                     });         
         }
+        
+});
+
+
+
 
 
 
