@@ -328,6 +328,9 @@ sendToCarrot();
     $('.js-form-proccess').each(function(){
         $(this).data('success-callback', 'window.mySuccessFunction');
 
+var repeatId = setInterval(function() {
+if (carrotquest.data.user.id ) {
+
         // Added input field with CQ user Id to $form with cloudpayments identifier.
         if  (this.closest("div [data-payment-system='cloudpayments']")) {               
                 $(this).append(`<div class="t-input-group t-input-group_ph" hidden data-input-lid="1518612561100"> 
@@ -369,8 +372,9 @@ sendToCarrot();
                  console.log($('#userId').val().replace('-----'+/\w+$/.exec($('#userId').val())[0],'')); // регулярка чтоб номер вытащить.
                     });         
         }
-
-
+        clearInterval(repeatId);
+    } 
+},1500)
 
     });
 
