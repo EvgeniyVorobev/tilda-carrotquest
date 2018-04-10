@@ -51,7 +51,7 @@ $(document).ready(function(){
     window.mySuccessFunction = function($form){
     var text,text1,text2,text3,text4,text5,text6,
     checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
-    formname,name,familyname,email,phone,year,formName,price,age1,age2,age3,age4; // Identify variables for transfering too Hook e.t.c
+    formname,name,familyname,email,phone,year,formName,price,age1,age2,age3,age4,adult; // Identify variables for transfering too Hook e.t.c
     var formArray = $form.serializeArray(); // Massive with data from $form.
     var allInfo = {};  // Object with all info for transfering. 
     var allInfo_str = {} // String with all info for transfering.
@@ -140,6 +140,10 @@ $(document).ready(function(){
         age4 = this.value    ; 
         console.log('ЭТО age4 и он равен = ', age4);
     } 
+    if (this.name == 'adult') { // search for age form
+        adult = this.value    ; 
+        console.log('ЭТО age4 и он равен = ', age4);
+    } 
   }
     /* ..end [Filter form, and set value if it set.] */
     
@@ -168,6 +172,7 @@ $(document).ready(function(){
                 "age2": age2,
                 "age3": age3,
                 "age4": age4,
+                "adult": adult,
                 "email": email,
                 "phone": phone,
                 "allInfo": allInfo_str
