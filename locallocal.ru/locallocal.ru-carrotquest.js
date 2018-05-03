@@ -559,9 +559,9 @@ sendToCarrot();
 /* Function run after submit event execute - simple HTML/PHP sites  */
 $(document).ready(function(){
     window.mySuccessFunction = function($form){
-        console.log($form);
-        var text,text1,text2,text3,text4,text5,text6,
-        checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
+    console.log($form);
+    var text,text1,text2,text3,text4,text5,text6,
+    checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
     formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
     var formArray = $form.serializeArray(); // Massive with data from $form.
     var allInfo = {};  // Object with all info for transfering. 
@@ -650,13 +650,13 @@ $(document).ready(function(){
 
 /* Send Data to CQ */
 function sendToCarrot(){  
-    if ( (name != undefined || name != '') && formname != 'nosend') { // Update CQ user's name.
+    if ( (name != undefined || name != '') && formname != 'nosend'  && formname != 'payment') { // Update CQ user's name.
         carrotquest.identify({
             '$name': name
         });
 }
 
-    if (formname != undefined && formname != 'nosend') { // if $form got name="formname" 
+    if (formname != undefined && formname != 'nosend' && formname != 'payment') { // if $form got name="formname" 
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
         $.ajax({ // send to hook.io -> CQ dialogs
             type: 'POST',
@@ -690,6 +690,24 @@ function sendToCarrot(){
             }
         })
     }
+
+    if (formname == 'payment') { // if $form got name="formname" 
+        carrotquest.track('Перешел к оплате курса '+'['+name+']', allInfo); // send info to CQ Leads.
+        $.ajax({ // send to hook.io -> CQ dialogs
+            type: 'POST',
+            url: scriptSrc,
+            data: { 
+                "user_id": user_id,
+                "form_name": formname,
+                "form_url": decodeURI(location.href+'#'+formname),
+                "url": decodeURI(location.href),
+                "email": email,
+                "phone": phone,
+                "allInfo": allInfo_str
+            }
+        })
+    }
+
     $('#carrotUsername').text(name);
 }
 /* ..end [Send Data to CQ] */
