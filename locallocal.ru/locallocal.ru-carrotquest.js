@@ -703,7 +703,7 @@ function sendToCarrot(){
                 "url": decodeURI(location.href),
                 "email": email,
                 "phone": phone,
-                "name": $('#carrotUsername').text()
+                "name": $('#carrotUsername').text(),
                 "allInfo": allInfo_str
             }
         })
