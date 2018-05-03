@@ -158,7 +158,7 @@ $(document).ready(function(){
     }
 
     if (formname != undefined ) { // if $form got name="formname" && formname == 'Footer';
-        carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
+        carrotquest.track('Completed form with name: '+formname, allInfo); // send info to CQ Leads.
         $.ajax({ // send to hook.io -> CQ dialogs
             type: 'POST',
             url: scriptSrc,
@@ -181,7 +181,7 @@ $(document).ready(function(){
     }
 
     if (formname == undefined) { // if $form didn't got name="formname".      
-        carrotquest.track('Заполнил форму без имени', allInfo); // send info to CQ leads.
+        carrotquest.track('Completed form without name ', allInfo); // send info to CQ leads.
         $.ajax({ // send to hook.io -> CQ dialogs.
             type: 'POST',
             url: scriptSrc,
