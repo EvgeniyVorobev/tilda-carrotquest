@@ -49,6 +49,7 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
 },500)
 
 // Added CQ Leads ('Приступил к заполнению формы [ имя формы из formname ]')
+console.log('Работает');
 $('a[href*="#popup"]').click(function function_name(argument) {
 	console.log('клац');
 	var href_name = this.href.split('/')[this.href.split(':').length]; // popup href name;
