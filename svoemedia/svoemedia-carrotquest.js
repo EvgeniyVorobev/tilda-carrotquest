@@ -52,7 +52,10 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
 $(function(){
 	$('a[href*="#popup"]').click(function function_name(argument) {
 	var href_name = this.href.split('/')[this.href.split(':').length]; // popup href name;
+	console.log(href_name);
+	if $("div[data-tooltip-hook="+"'"+href_name+"'"+"]") {
 	var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0].value; // find popup formname VALUE
+	}
 	carrotquest.track('Перешел к заполнению формы '+'[ '+popup_formname+' ]'); // send info to CQ leads.
 })
 })
