@@ -50,6 +50,7 @@ var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername
 
 // Added CQ Leads ('Приступил к заполнению формы [ имя формы из formname ]')
 $('a[href*="#popup"]').click(function function_name(argument) {
+	console.log('клац');
 	var href_name = this.href.split('/')[this.href.split(':').length]; // popup href name;
 	var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0].value; // find popup formname VALUE
 	carrotquest.track('Перешел к заполнению формы '+'['+popup_formname+']'); // send info to CQ leads.
