@@ -54,8 +54,11 @@ $(function(){
 	var href_name = '#'+this.href.split('/')[this.href.split('/').length-1].replace(/.*#/gi,""); // popup href name;
 	console.log(href_name);
 	if ($("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0]) {
-	var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0].value || $("div[data-tooltip-hook="+"'"+href_name+"'"+"]")[0].getAttribute('data-tooltip-hook') ; // find popup formname VALUE
+	var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0].value // find popup formname VALUE
 	carrotquest.track('Перешел к заполнению формы '+'[ '+popup_formname+' ]'); // send info to CQ leads.
+	} else {
+		var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]")[0].getAttribute('data-tooltip-hook') ;
+		carrotquest.track('Открыл всплывающий попап '+'[ '+popup_formname+' ]')
 	}
 })
 })
