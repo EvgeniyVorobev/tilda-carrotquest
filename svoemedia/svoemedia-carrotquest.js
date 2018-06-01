@@ -53,8 +53,8 @@ $(function(){
 	$('a[href*="#popup"]').click(function function_name(argument) {
 	var href_name = '#'+this.href.split('/')[this.href.split('/').length-1].replace(/.*#/gi,""); // popup href name;
 	console.log(href_name);
-	if ($("div[data-tooltip-hook="+"'"+href_name+"'"+"]")) {
-	var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0].value || $("div[data-tooltip-hook="+"'"+href_name+"'"+"]")[0] ; // find popup formname VALUE
+	if ($("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0]) {
+	var popup_formname = $("div[data-tooltip-hook="+"'"+href_name+"'"+"]").find('input[name="formname"]')[0].value ; // find popup formname VALUE
 	}
 	carrotquest.track('Перешел к заполнению формы '+'[ '+popup_formname+' ]'); // send info to CQ leads.
 })
