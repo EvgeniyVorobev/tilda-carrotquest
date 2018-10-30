@@ -290,8 +290,12 @@ function sendToCarrot(){
         carrotquest.identify({
             '$name': name
         });
-}
-
+    }
+    if ( phone != undefined || phone != '') { // Update CQ user's phone.
+        carrotquest.identify({
+            '$phone': phone
+        });
+    }
     if (formname != undefined) { // if $form got name="formname" 
         carrotquest.track('Заполнил форму '+formname, allInfo); // send info to CQ Leads.
         $.ajax({ // send to hook.io -> CQ dialogs
