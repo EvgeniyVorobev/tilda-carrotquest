@@ -149,8 +149,12 @@ function sendSimpleForm(){ // Catch information from form.
 function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
-            '$name': name
+        '$name': name
         });
+    if ( phone != undefined || phone != '') { // Update CQ user's name.
+        carrotquest.identify({
+        '$phone': phone
+    });
 }
 
     if (formname != undefined) { // if form got name="formname" .
