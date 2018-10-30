@@ -151,10 +151,6 @@ function sendToCarrot(){
         carrotquest.identify({
             '$name': name
         });
-    if ( phone != undefined || phone != '') { // Update CQ user's name.
-        carrotquest.identify({
-            '$phone': phone
-    });
 }
 
     if (formname != undefined) { // if form got name="formname" .
@@ -418,6 +414,7 @@ $(this).data('success-callback', 'window.mySuccessFunction');
 
 /* ~~~~~~~~ IF SITE NOT USE TILDA  ~~~~~~~~*/
 else {  
+
 window.evgCarrot = {}; // Global Object for scripts
 var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
     if (carrotquest && carrotquest.data) {
