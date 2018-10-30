@@ -149,11 +149,11 @@ function sendSimpleForm(){ // Catch information from form.
 function sendToCarrot(){  
     if ( name != undefined || name != '') { // Update CQ user's name.
         carrotquest.identify({
-        '$name': name
+            '$name': name
         });
     if ( phone != undefined || phone != '') { // Update CQ user's name.
         carrotquest.identify({
-        '$phone': phone
+            '$phone': phone
     });
 }
 
@@ -418,7 +418,6 @@ $(this).data('success-callback', 'window.mySuccessFunction');
 
 /* ~~~~~~~~ IF SITE NOT USE TILDA  ~~~~~~~~*/
 else {  
-
 window.evgCarrot = {}; // Global Object for scripts
 var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
     if (carrotquest && carrotquest.data) {
