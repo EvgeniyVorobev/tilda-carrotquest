@@ -293,7 +293,7 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
                         '$name': name
                     });
                 }
-                if ( (phone != undefined || phone != '') && $($form).closest("[data-payment-system]")[0] != undefined ) { // Update CQ user's phone if not PAYMENT SYSTEM
+                if ( (phone != undefined || phone != '') && $($form).closest("[data-payment-system]")[0] == undefined ) { // Update CQ user's phone if not PAYMENT SYSTEM
                     carrotquest.identify({
                         '$phone': phone
                     });
