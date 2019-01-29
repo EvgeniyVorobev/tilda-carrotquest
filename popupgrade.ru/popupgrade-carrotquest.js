@@ -156,7 +156,7 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
                         '$name': name
                     });
                 }
-                if ( phone != undefined || phone != '') { // Update CQ user's phone.
+                if ( (phone != undefined || phone != '') && $($form).closest("[data-payment-system]")[0] == undefined ) { // Update CQ user's phone if NOT PAYMENT FORM.
                     carrotquest.identify({
                         '$phone': phone
                     });
