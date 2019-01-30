@@ -27,6 +27,7 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
     window.evgCarrot = {}; // Global Object for scripts
     var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
         user_id = carrotquest.data.user.id ;
+        console.log(user_id);
         user_id.length > 4 ? clearInterval(user_id) : '';
     },1000) ;
 
