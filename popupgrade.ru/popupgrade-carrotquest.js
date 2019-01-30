@@ -24,11 +24,12 @@ carrotquest.connect('23410-993634aa62aa420eeb856a9bf2');
 
 /* IF SITE USE TILDA */
 if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
+    var user_id;
     window.evgCarrot = {}; // Global Object for scripts
-    var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
+    var searchUserId = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
         user_id = carrotquest.data.user.id ;
         console.log(user_id);
-        user_id.length > 4 ? clearInterval(user_id) : '';
+        user_id.length > 4 ? clearInterval(searchUserId) : '';
     },1000) ;
 
     var hidden_name = setInterval(function() { // Add CQ username to #carrotUsername (for update CQ username if not set in Form form[name="name"]. )
