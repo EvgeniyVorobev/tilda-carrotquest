@@ -1,4 +1,4 @@
-// Made by EVG https://t.me/EvgeniyVorobev \\
+// Made by EVG https://t.me/EvgeniyVorobev 
 
 /* Preference */
 var authToken = 'app.7133.ebdfb4c903b8ae106fc5e7a741c0dbfa5e375bd7d1e23206'; // Token from CQ.
@@ -24,7 +24,6 @@ carrotquest.connect('7133-b8bd2e320f9d0a7743362aae6a4');
 /* ..end [Script from CQ Preference] */
 
 if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
-
     window.evgCarrot = {}; // Global Object for scripts
     var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
         user_id = carrotquest.data.user.id ;
@@ -197,10 +196,28 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
     /* ..end [Function for special UNIQ form with interview (test)]  */
 
 
-    /* Function run after submit event execute - Tilda Form's (not payments form's). */
+    /* Function run after submit event execute - All Tilda forms [but not payments]. */
     $(document).ready(function(){
-        window.mySuccessFunction = function($form){
 
+            window.myAfterSendedFunction = function ($form) {
+                // Добавление события о том какие товары будут покупать.
+                if ($($form).closest("div [data-payment-system='cloudpayments']")[0] || $($form).closest("div [data-payment-system='yakassa']")[0]) {
+                    console.log(' Это платёжная форма');
+                    tcart.products.forEach(function(elem){
+                        carrotquest.track('Перешел к покупке товара '+elem.name)
+                    })
+                } else {
+                    throw new Error('Эта форма не платёжная, но всё гуд, это предупреждение, данные в carrot улетят с другого места. ;)')
+                }
+            }
+
+            $('.t706 form').each(function () {
+                $(this).data('formsended-callback', 'window.myAfterSendedFunction');
+            });
+
+
+        window.mySuccessFunction = function($form){
+            console.log('Используется Tilda');
             var text,text1,text2,text3,text4,text5,text6,
                 checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
                 formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
@@ -213,6 +230,8 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
             var optionInformation = $($form).find('option');
             var checkboxInformation = $($form).find("input[type='checkbox']");
 
+            console.log('это форма ',$form);
+            console.log('это форма ', $($form).closest("div [data-payment-system='cloudpayments']"));
             /* Collect information from form fields */
             inputInformation.each(function () {  // Write input data from $form, that meet requirements.
                 if (this.name != 'tildaspec-projectid' && this.name != 'tildaspec-pageid' && this.name != 'formservices[]'
@@ -345,10 +364,8 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
                 }
             },1500)
         }
-        /* ..end [Function for special UNIQ form with interview (test)]  */
 
-
-        // if press Submit , then run mySuccessFunction;
+        // if press any key in input fields
         $('.js-form-proccess').each(function(){
             $(this).data('success-callback', 'window.mySuccessFunction');
             // Added input field with CQ user Id to $form with cloudpayments identifier.
@@ -391,11 +408,6 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
 
         });
 
-
-
-
-
-
         // Scroll to form from CQ leads/dialogs.
         setTimeout(function(){
             var scrollTag = decodeURI(location.href).replace(location.origin+location.pathname+'#','');
@@ -410,15 +422,10 @@ if (typeof(window.Tilda) == 'object') { // If site use Tilda.cc
             $.each($('input'),searchForm);
         },2000)
     });
-
-
-
-
 }
-
-/* ~~~~~~~~ IF SITE NOT USE TILDA  ~~~~~~~~*/
+/* ~~~~~~~~ IF SITE NOT USE TILDA  ( course.locallocal.ru ) ~~~~~~~~*/
 else {
-
+    console.log('Используется не тильда !');
     window.evgCarrot = {}; // Global Object for scripts
     var user_id = setInterval(function updateUserId(){ // GET uniq user id from CQ object.
         if (carrotquest && carrotquest.data) {
@@ -578,10 +585,9 @@ else {
     /* ..end [Function for special UNIQ form with interview (test)]  */
 
 
-    /* Function run after submit event execute - simple HTML/PHP sites  */
+    /* Function run after submit event execute - simple HTML/PHP sites ( course.localocal.ru ) */
     $(document).ready(function(){
         window.mySuccessFunction = function($form){
-            console.log($form);
             var text,text1,text2,text3,text4,text5,text6,
                 checkbox,checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,
                 formname,name,familyname,email,phone,year,formName,price; // Identify variables for transfering too Hook e.t.c
