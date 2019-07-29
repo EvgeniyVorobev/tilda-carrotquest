@@ -223,6 +223,7 @@ if (typeof (window.Tilda) == 'object') { // If site use Tilda.cc
                 tcart.products.forEach(function (elem) {
                     carrotquest.track('Перешел к покупке товара ' + elem.name)
                 })
+                 carrotquest.track('Перешел к покупке товара');
             } else {
                 throw new Error('Эта форма не платёжная, но всё гуд, это предупреждение, данные в carrot улетят с другого места. ;)')
             }
