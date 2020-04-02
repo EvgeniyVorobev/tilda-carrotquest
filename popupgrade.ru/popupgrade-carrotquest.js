@@ -2,7 +2,7 @@
 
 /* Preference */
 var authToken = 'app.23410.ec50351cb76b188da9aad7e66156672d336a6ada4fc5efd2'; // Token from CQ.
-var scriptSrc = 'https://hook.io/evgeniyvorobevv/popupgrade-carrotquest'; // Hook script src.
+var scriptSrc = 'https://hook.io/evgeniyvorobev/popupgrade-carrotquest'; // Hook script src.
 /* ..end [Preference] */
 
 /* Script from CQ Preference */
