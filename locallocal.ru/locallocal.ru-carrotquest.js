@@ -2,7 +2,7 @@
 
 /* Preference */
 var authToken = 'app.15602.219d2cc34de7523ce528be2b5894a635de1264f172a20f24'; // Token from CQ.
-var scriptSrc = 'https://hook.io/evgeniyvorobevv/locallocalru-carrotquest'; // Hook script src.
+var scriptSrc = 'https://hook.io/evgeniyvorobev/locallocalru-carrotquest'; // Hook script src.
 /* ..end [Preference] */
 
 
