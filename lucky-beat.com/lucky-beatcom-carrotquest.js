@@ -2,7 +2,7 @@
 
 /* Preference */
 var authToken = 'app.15347.66b19d6ca55bc9e3734d1768c5bec9ab7fe2361fa2ebe67a'; // Token from CQ.
-var scriptSrc = 'https://hook.io/evgeniyvorobevv/lucky-beatcom-carrotquest'; // Hook script src.
+var scriptSrc = 'https://hook.io/evgeniyvorobev/lucky-beatcom-carrotquest'; // Hook script src.
 /* ..end [Preference] */
 
 
